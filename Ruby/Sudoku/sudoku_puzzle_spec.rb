@@ -7,7 +7,7 @@ end
 
 describe SudokuPuzzle do
   it "should have a 9x9 grid by default" do
-    puzzle = SudokuPuzzle.new(9)
+    puzzle = SudokuPuzzle.new
     check_size(puzzle, 9)
   end
 
