@@ -1,0 +1,12 @@
+.bzr*
+*DS*Store
+*bowling*rb
+*string_spec*rb
+Clojure
+Erlang
+Haskell
+Quine
+Lisp
+django
+rails
+lvn
