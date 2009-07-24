@@ -1,8 +1,8 @@
 require 'matrix'
 
 class SudokuPuzzle
-  def initialize(grid_rows=nil)
-    @grid = Matrix.I(grid_size)
+  def initialize(grid_rows)
+    @grid = Matrix[*grid_rows]
   end
 
   def grid
