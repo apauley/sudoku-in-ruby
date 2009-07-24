@@ -11,7 +11,7 @@ describe SudokuPuzzle do
     check_size(puzzle, 9)
   end
 
-  it "should allow the construction of puzzles with different sizes" do
+  it "should allow the construction of puzzles with sizes above zero" do
     puzzle = SudokuPuzzle.new(2)
     check_size(puzzle, 2)
   end
