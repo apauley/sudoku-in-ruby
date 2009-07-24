@@ -1,7 +1,11 @@
 require 'matrix'
 
 class SudokuPuzzle
-    def grid
-        Matrix.I(9)
-    end
+  def initialize(grid_size)
+    @grid_size = grid_size
+  end
+
+  def grid
+    Matrix.I(@grid_size)
+  end
 end
