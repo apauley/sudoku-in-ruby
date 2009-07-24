@@ -10,4 +10,8 @@ describe SudokuPuzzle do
     puzzle = SudokuPuzzle.new([[1,2], [2,1]])
     check_size(puzzle, 2)
   end
+
+  it "should only allow square grids" do
+    lambda {SudokuPuzzle.new([[1,2]])}.should raise_error()
+  end
 end
