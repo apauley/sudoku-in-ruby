@@ -44,6 +44,10 @@ class SudokuPuzzle
     return @grid.column_vectors.collect {|each| each.to_a}
   end
 
+  def cell_entry(row_index, column_index)
+    @grid[row_index-1, column_index-1]
+  end
+
   def solved?
     grid.to_a.each {|x|
       x.each {|y|

@@ -45,4 +45,11 @@ describe SudokuPuzzle do
     puzzle = SudokuPuzzle.new([[2,0], [1,0]])
     puzzle.columns.should == [[2,1], [0,0]]
   end
+
+  it "should answer its cell entries" do
+    puzzle = SudokuPuzzle.new([[2,0], [1,0]])
+    puzzle.cell_entry(2, 2).should == 0
+    puzzle.cell_entry(1, 1).should == 2
+    puzzle.cell_entry(2, 1).should == 1
+  end
 end
