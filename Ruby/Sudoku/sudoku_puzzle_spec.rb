@@ -35,4 +35,14 @@ describe SudokuPuzzle do
     empty_puzzle.solved?.should == false
     solved_puzzle.solved?.should == true
   end
+
+  it "should know its rows" do
+    puzzle = SudokuPuzzle.new([[1,2], [2,1]])
+    puzzle.rows.should == [[1,2], [2,1]]
+  end
+
+  it "should know its columns" do
+    puzzle = SudokuPuzzle.new([[2,0], [1,0]])
+    puzzle.columns.should == [[2,1], [0,0]]
+  end
 end

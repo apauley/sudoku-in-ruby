@@ -36,6 +36,14 @@ class SudokuPuzzle
     @grid
   end
 
+  def rows
+    return @grid.row_vectors.collect {|each| each.to_a}
+  end
+
+  def columns
+    return @grid.column_vectors.collect {|each| each.to_a}
+  end
+
   def solved?
     grid.to_a.each {|x|
       x.each {|y|
