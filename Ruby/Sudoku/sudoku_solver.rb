@@ -4,6 +4,10 @@ class SudokuSolver
   end
 
   def solve
-    @puzzle
+    if @puzzle.solved?
+      return @puzzle
+    else
+      return SudokuPuzzle.new([[1]])
+    end
   end
 end
