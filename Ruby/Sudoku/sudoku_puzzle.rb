@@ -10,17 +10,17 @@ class SudokuPuzzle
     if not @grid.square?
       raise
     end
-    validate_entries(@grid.to_a)
+    validate_entries
   end
 
-  def validate_entries(an_array)
-    for i in 0...an_array.length
-      for j in 0...an_array[i].length
-        if an_array[i][j] > size
+  def validate_entries
+    grid.to_a.each {|x|
+      x.each {|y|
+        if y > size
           raise
         end
-      end
-    end
+      }
+    }
   end
 
   def ==(anotherObject)
@@ -36,14 +36,13 @@ class SudokuPuzzle
   end
 
   def solved?
-    an_array = grid.to_a
-    for i in 0...an_array.length
-      for j in 0...an_array[i].length
-        if an_array[i][j] == 0
+    grid.to_a.each {|x|
+      x.each {|y|
+        if y == 0
           return false
         end
-      end
-    end
+      }
+    }
     return true
   end
 end
