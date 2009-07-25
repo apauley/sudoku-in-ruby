@@ -23,9 +23,14 @@ class SudokuPuzzle
     end
   end
 
+  def ==(anotherObject)
+    grid == anotherObject.grid
+  end
+
   def size
     grid.row_size()
   end
+
   def grid
     @grid
   end

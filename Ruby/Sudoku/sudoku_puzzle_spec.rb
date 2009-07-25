@@ -20,4 +20,12 @@ describe SudokuPuzzle do
   it "should not allow cell values greater than the puzzle size" do
     lambda {SudokuPuzzle.new([[2]])}.should raise_error()
   end
+
+  it "should know when another puzzle is equal to itself" do
+    a_puzzle = SudokuPuzzle.new([[1]])
+    same_puzzle = SudokuPuzzle.new([[1]])
+    empty_puzzle = SudokuPuzzle.new([[0]])
+    a_puzzle.should == same_puzzle
+    a_puzzle.should_not == empty_puzzle
+  end
 end
