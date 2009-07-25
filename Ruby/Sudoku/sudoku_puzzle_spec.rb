@@ -28,4 +28,11 @@ describe SudokuPuzzle do
     a_puzzle.should == same_puzzle
     a_puzzle.should_not == empty_puzzle
   end
+
+  it "should know whether it is solved" do
+    empty_puzzle = SudokuPuzzle.new([[0]])
+    solved_puzzle = SudokuPuzzle.new([[1]])
+    empty_puzzle.solved?.should == false
+    solved_puzzle.solved?.should == true
+  end
 end

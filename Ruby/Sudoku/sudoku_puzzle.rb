@@ -34,4 +34,16 @@ class SudokuPuzzle
   def grid
     @grid
   end
+
+  def solved?
+    an_array = grid.to_a
+    for i in 0...an_array.length
+      for j in 0...an_array[i].length
+        if an_array[i][j] == 0
+          return false
+        end
+      end
+    end
+    return true
+  end
 end
