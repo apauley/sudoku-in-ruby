@@ -1,7 +1,7 @@
 require 'sudoku_solver'
 
 describe SudokuSolver do
-  it "should return a solved 1x1 puzzle unchanged" do
+  it "should return a solved puzzle unchanged" do
     puzzle = SudokuPuzzle.new([[1]])
     solver = SudokuSolver.new(puzzle)
     solver.solve.object_id.should == puzzle.object_id
@@ -11,5 +11,11 @@ describe SudokuSolver do
     puzzle = SudokuPuzzle.new([[0]])
     solver = SudokuSolver.new(puzzle)
     solver.solve.should == SudokuPuzzle.new([[1]])
+  end
+
+  it "should solve a 2x2 puzzle" do
+    puzzle = SudokuPuzzle.new([[1,2], [0,0]])
+    solver = SudokuSolver.new(puzzle)
+    solver.solve.should == SudokuPuzzle.new([[1,2], [2,1]])
   end
 end
