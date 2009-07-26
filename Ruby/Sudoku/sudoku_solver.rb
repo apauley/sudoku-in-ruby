@@ -22,25 +22,24 @@ class SudokuSolver
     return new_component
   end
 
+  def improve_components(an_array)
+    improved_components = []
+    an_array.each {|component|
+      new_component = improve_grid_component(component)
+      improved_components.push(new_component)
+    }
+    return improved_components
+  end
+
   def solve
     if @puzzle.solved?
       return @puzzle
     end
 
-    improved_rows = []
-    @puzzle.rows.each {|row|
-      new_row = improve_grid_component(row)
-      improved_rows.push(new_row)
-    }
-
+    improved_rows = improve_components(@puzzle.rows)
     improved_puzzle = SudokuPuzzle.new(improved_rows)
 
-    improved_columns = []
-    improved_puzzle.columns.each {|column|
-      new_column = improve_grid_component(column)
-      improved_columns.push(new_column)
-    }
-
+    improved_columns = improve_components(improved_puzzle.columns)
     return SudokuPuzzle.columns(improved_columns)
   end
 end
