@@ -1,5 +1,5 @@
 class SudokuCell
-  def initialize(cell_value=0)
+  def initialize(cell_value)
     @value = cell_value
     freeze
   end

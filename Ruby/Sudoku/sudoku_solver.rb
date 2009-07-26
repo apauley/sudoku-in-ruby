@@ -1,6 +1,7 @@
 class SudokuSolver
   def initialize(puzzle)
     @puzzle = puzzle
+    puts puzzle.grid.to_s
     freeze
   end
 
@@ -11,8 +12,10 @@ class SudokuSolver
 
     if @puzzle.size == 1
       return SudokuPuzzle.new([[1]])
-    else
-      return SudokuPuzzle.new([[1,2], [2,1]])
     end
+
+    @puzzle.rows.each {|row|
+      puts '|sum '+@puzzle.sum(row).to_s+' sum|'
+    }
   end
 end

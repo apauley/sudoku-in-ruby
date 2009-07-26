@@ -64,4 +64,15 @@ describe SudokuPuzzle do
     puzzle.cell(2, 2).value.should == 0
     puzzle.cell(2, 1).value.should == 1
   end
+
+  it "should know its expected component total" do
+    puzzle = SudokuPuzzle.new([[0]])
+    puzzle.component_total.should == 1
+
+    puzzle = SudokuPuzzle.new([[0,0], [0,0]])
+    puzzle.component_total.should == 3
+
+    puzzle = SudokuPuzzle.new([[0,0,0], [0,0,0], [0,0,0]])
+    puzzle.component_total.should == 6
+  end
 end

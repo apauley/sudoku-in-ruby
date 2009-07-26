@@ -48,6 +48,17 @@ class SudokuPuzzle
     grid.row_size()
   end
 
+  def sum(an_array)
+    # FIXME: How do you sum a list of numbers idiomatically?
+    total = 0
+    an_array.each {|x| total = total + x}
+    return total
+  end
+
+  def component_total
+    sum((1...size+1).to_a)
+  end
+
   def grid
     @grid
   end
