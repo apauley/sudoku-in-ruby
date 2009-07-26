@@ -10,7 +10,8 @@ class SudokuPuzzle
   def validate
     validate_grid
     validate_entries
-    validate_no_duplicates
+    validate_no_duplicates(rows)
+    validate_no_duplicates(columns)
   end
 
   def validate_grid
@@ -29,9 +30,10 @@ class SudokuPuzzle
     }
   end
 
-  def validate_no_duplicates
-    rows.each {|row|
-      if row.uniq != row
+  def validate_no_duplicates(an_array)
+    an_array.each {|list|
+      list_without_zeros = list.select {|each| each != 0}
+      if list_without_zeros.uniq != list_without_zeros
         raise
       end
     }

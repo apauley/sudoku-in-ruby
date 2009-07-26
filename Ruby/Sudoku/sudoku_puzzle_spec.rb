@@ -13,6 +13,10 @@ describe SudokuPuzzle do
     check_size(puzzle, 1)
   end
 
+  it "should allow the creation of an empty puzzle" do
+    SudokuPuzzle.new([[0,0], [0,0]])
+  end
+
   it "should only allow square grids" do
     lambda {SudokuPuzzle.new([[1,2]])}.should raise_error()
   end
@@ -23,6 +27,10 @@ describe SudokuPuzzle do
 
   it "should not allow duplicate values in rows" do
     lambda {SudokuPuzzle.new([[1,1], [0,0]])}.should raise_error()
+  end
+
+  it "should not allow duplicate values in columns" do
+    lambda {SudokuPuzzle.new([[2,0], [2,0]])}.should raise_error()
   end
 
   it "should know when another puzzle is equal to itself" do
