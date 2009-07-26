@@ -47,7 +47,7 @@ describe SudokuPuzzle do
 
   it "should know whether it is solved" do
     empty_puzzle = SudokuPuzzle.new([[0]])
-    solved_puzzle = SudokuPuzzle.new([[1]])
+    solved_puzzle = SudokuPuzzle.new([[1,2,3], [2,3,1], [3,1,2]])
     empty_puzzle.solved?.should == false
     solved_puzzle.solved?.should == true
   end

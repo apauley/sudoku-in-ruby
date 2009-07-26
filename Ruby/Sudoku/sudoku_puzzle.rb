@@ -81,11 +81,9 @@ class SudokuPuzzle
   end
 
   def solved?
-    grid.to_a.flatten.each {|x|
-      if x == 0
-        return false
-      end
-    }
-    return true
+    row_totals = rows.collect {|each| sum(each) }
+    column_totals = columns.collect {|each| sum(each) }
+
+    return sum((row_totals|column_totals)) == component_total
   end
 end
