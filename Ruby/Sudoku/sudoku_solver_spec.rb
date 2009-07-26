@@ -13,12 +13,18 @@ describe SudokuSolver do
     solver.solve.should == SudokuPuzzle.new([[1]])
   end
 
-  it "should solve a 2x2 puzzle" do
+  it "should complete the last remaining element of a grid component" do
     puzzle = SudokuPuzzle.new([[1,0], [0,0]])
+    solver = SudokuSolver.new(puzzle)
+    solver.improve_grid_component(puzzle.rows[0]).should == [1,2]
+  end
+
+  it "should solve a 2x2 puzzle" do
+    puzzle = SudokuPuzzle.new([[1,0], [2,0]])
     solver = SudokuSolver.new(puzzle)
     solver.solve.should == SudokuPuzzle.new([[1,2], [2,1]])
 
-    puzzle = SudokuPuzzle.new([[0,0], [0,2]])
+    puzzle = SudokuPuzzle.new([[0,1], [0,2]])
     solver = SudokuSolver.new(puzzle)
     solver.solve.should == SudokuPuzzle.new([[2,1], [1,2]])
   end

@@ -1,8 +1,25 @@
 class SudokuSolver
   def initialize(puzzle)
     @puzzle = puzzle
-    puts puzzle.grid.to_s
     freeze
+  end
+
+  def improve_grid_component(an_array)
+      sum = @puzzle.sum(an_array)
+
+      if sum > 0
+        new_component = []
+        an_array.each {|x|
+        if x == 0
+          new_component.push(@puzzle.component_total - sum)
+        else
+          new_component.push(x)
+        end
+      }
+      else
+        new_component = an_array
+      end
+    return new_component
   end
 
   def solve
@@ -14,8 +31,10 @@ class SudokuSolver
       return SudokuPuzzle.new([[1]])
     end
 
+    improved_rows = []
     @puzzle.rows.each {|row|
-      puts '|sum '+@puzzle.sum(row).to_s+' sum|'
+      improved_rows.push(improve_grid_component(row))
     }
+    return SudokuPuzzle.new(improved_rows)
   end
 end
