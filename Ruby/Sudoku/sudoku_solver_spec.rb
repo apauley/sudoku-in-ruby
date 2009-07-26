@@ -17,6 +17,12 @@ describe SudokuSolver do
     solver.improve_grid_component(puzzle.rows[0]).should == [1,2]
   end
 
+  it "should return an empty row unchanged when trying to improve a grid component" do
+    puzzle = SudokuPuzzle.new([[0,0], [0,0]])
+    solver = SudokuSolver.new(puzzle)
+    solver.improve_grid_component(puzzle.rows[0]).should == [0,0]
+  end
+
   it "should solve a 1x1 puzzle" do
     puzzle = SudokuPuzzle.new([[0]])
     solver = SudokuSolver.new(puzzle)

@@ -7,6 +7,10 @@ class SudokuSolver
   def improve_grid_component(an_array)
     sum = @puzzle.sum(an_array)
 
+    if (sum == 0) and (an_array.size > 1)
+      return an_array
+    end
+
     new_component = []
     an_array.each {|x|
       if x == 0
@@ -25,7 +29,8 @@ class SudokuSolver
 
     improved_rows = []
     @puzzle.rows.each {|row|
-      improved_rows.push(improve_grid_component(row))
+      new_row = improve_grid_component(row)
+      improved_rows.push(new_row)
     }
     return SudokuPuzzle.new(improved_rows)
   end

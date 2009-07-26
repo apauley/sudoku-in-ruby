@@ -22,12 +22,11 @@ class SudokuPuzzle
   end
 
   def validate_entries
-    grid.to_a.each {|x|
-      x.each {|y|
-        if y > size
-          raise
-        end
-      }
+    grid.to_a.flatten.each {|x|
+      if x > size
+        msg = "Invalid entry " + x.to_s + " for puzzle with size " + size.to_s
+        raise msg
+      end
     }
   end
 
