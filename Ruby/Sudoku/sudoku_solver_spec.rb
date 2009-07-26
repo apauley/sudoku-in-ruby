@@ -30,11 +30,11 @@ describe SudokuSolver do
   end
 
   it "should solve a 2x2 puzzle" do
-    puzzle = SudokuPuzzle.new([[1,0], [2,0]])
+    puzzle = SudokuPuzzle.new([[1,0], [0,0]])
     solver = SudokuSolver.new(puzzle)
     solver.solve.should == SudokuPuzzle.new([[1,2], [2,1]])
 
-    puzzle = SudokuPuzzle.new([[0,1], [0,2]])
+    puzzle = SudokuPuzzle.new([[0,0], [0,2]])
     solver = SudokuSolver.new(puzzle)
     solver.solve.should == SudokuPuzzle.new([[2,1], [1,2]])
   end

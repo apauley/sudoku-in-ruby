@@ -2,6 +2,11 @@ require 'matrix'
 require 'sudoku_cell'
 
 class SudokuPuzzle
+  def SudokuPuzzle.columns(grid_columns)
+    matrix = Matrix.columns(grid_columns)
+    return SudokuPuzzle.new(matrix.to_a)
+  end
+
   def initialize(grid_rows)
     @grid = Matrix[*grid_rows]
     freeze

@@ -1,16 +1,20 @@
 require 'sudoku_puzzle'
 
-def check_size(puzzle, expected_size)
-  puzzle.grid.row_size().should == expected_size
-  puzzle.grid.column_size().should == expected_size
-end
-
 describe SudokuPuzzle do
-  it "should allow the grid contents to be supplied on creation" do
-    puzzle = SudokuPuzzle.new([[1,2], [2,1]])
-    check_size(puzzle, 2)
+  it "should use grid rows for default construction" do
+    puzzle = SudokuPuzzle.new([[1,0], [2,1]])
+    puzzle.rows.should == [[1,0], [2,1]]
+    puzzle.columns.should == [[1,2], [0,1]]
+
     puzzle = SudokuPuzzle.new([[1]])
-    check_size(puzzle, 1)
+    puzzle.rows.should == [[1]]
+    puzzle.columns.should == [[1]]
+  end
+
+  it "should also allow construction with columns" do
+    puzzle = SudokuPuzzle.columns([[2,1], [0,0]])
+    puzzle.columns.should == [[2,1], [0,0]]
+    puzzle.rows.should == [[2,0], [1,0]]
   end
 
   it "should allow the creation of an empty puzzle" do

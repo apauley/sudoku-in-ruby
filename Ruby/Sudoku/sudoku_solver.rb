@@ -32,6 +32,15 @@ class SudokuSolver
       new_row = improve_grid_component(row)
       improved_rows.push(new_row)
     }
-    return SudokuPuzzle.new(improved_rows)
+
+    improved_puzzle = SudokuPuzzle.new(improved_rows)
+
+    improved_columns = []
+    improved_puzzle.columns.each {|column|
+      new_column = improve_grid_component(column)
+      improved_columns.push(new_column)
+    }
+
+    return SudokuPuzzle.columns(improved_columns)
   end
 end
