@@ -8,10 +8,15 @@ class SudokuPuzzle
   end
 
   def validate
+    validate_grid
+    validate_entries
+    validate_no_duplicates
+  end
+
+  def validate_grid
     if not @grid.square?
       raise
     end
-    validate_entries
   end
 
   def validate_entries
@@ -21,6 +26,14 @@ class SudokuPuzzle
           raise
         end
       }
+    }
+  end
+
+  def validate_no_duplicates
+    rows.each {|row|
+      if row.uniq != row
+        raise
+      end
     }
   end
 

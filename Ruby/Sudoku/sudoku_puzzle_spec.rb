@@ -21,6 +21,10 @@ describe SudokuPuzzle do
     lambda {SudokuPuzzle.new([[2]])}.should raise_error()
   end
 
+  it "should not allow duplicate values in rows" do
+    lambda {SudokuPuzzle.new([[1,1], [0,0]])}.should raise_error()
+  end
+
   it "should know when another puzzle is equal to itself" do
     a_puzzle = SudokuPuzzle.new([[1]])
     same_puzzle = SudokuPuzzle.new([[1]])
