@@ -58,10 +58,10 @@ describe SudokuPuzzle do
     puzzle.columns.should == [[2,1], [0,0]]
   end
 
-  it "should answer its cell entries" do
+  it "should answer its cells" do
     puzzle = SudokuPuzzle.new([[2,0], [1,0]])
-    puzzle.cell_entry(2, 2).should == 0
-    puzzle.cell_entry(1, 1).should == 2
-    puzzle.cell_entry(2, 1).should == 1
+    puzzle.cell(1, 1).value.should == 2
+    puzzle.cell(2, 2).value.should == 0
+    puzzle.cell(2, 1).value.should == 1
   end
 end

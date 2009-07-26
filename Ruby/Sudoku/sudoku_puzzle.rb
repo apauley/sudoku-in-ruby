@@ -1,4 +1,5 @@
 require 'matrix'
+require 'sudoku_cell'
 
 class SudokuPuzzle
   def initialize(grid_rows)
@@ -59,8 +60,9 @@ class SudokuPuzzle
     return @grid.column_vectors.collect {|each| each.to_a}
   end
 
-  def cell_entry(row_index, column_index)
-    @grid[row_index-1, column_index-1]
+  def cell(row_index, column_index)
+    cell_value = @grid[row_index-1, column_index-1]
+    return SudokuCell.new(cell_value)
   end
 
   def solved?
