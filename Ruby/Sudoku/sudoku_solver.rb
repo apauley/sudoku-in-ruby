@@ -5,15 +5,15 @@ class SudokuSolver
   end
 
   def improve_grid_component(an_array)
-    sum = @puzzle.sum(an_array)
-
-    if (sum == 0) and (an_array.size > 1)
+    component_without_zeros = an_array.select {|each| each != 0}
+    if (@puzzle.size - component_without_zeros.size) > 1
       return an_array
     end
 
     new_component = []
     an_array.each {|x|
       if x == 0
+        sum = @puzzle.sum(an_array)
         new_component.push(@puzzle.component_total - sum)
       else
         new_component.push(x)
@@ -40,6 +40,6 @@ class SudokuSolver
     improved_puzzle = SudokuPuzzle.new(improved_rows)
 
     improved_columns = improve_components(improved_puzzle.columns)
-    return SudokuPuzzle.columns(improved_columns)
+    return self.class.new(SudokuPuzzle.columns(improved_columns)).solve
   end
 end

@@ -21,10 +21,12 @@ describe SudokuSolver do
     solver.improve_grid_component(puzzle.rows[0]).should == [1,2,3]
   end
 
-  it "should return an empty row unchanged when trying to improve a grid component" do
-    puzzle = SudokuPuzzle.new([[0,0], [0,0]])
+  it "should not change a row with too little info when trying to improve a grid component" do
+    puzzle = SudokuPuzzle.new([[0,3,0], [1,0,0], [0,0,0]])
     solver = SudokuSolver.new(puzzle)
-    solver.improve_grid_component(puzzle.rows[0]).should == [0,0]
+    solver.improve_grid_component(puzzle.rows[0]).should == [0,3,0]
+    solver.improve_grid_component(puzzle.rows[1]).should == [1,0,0]
+    solver.improve_grid_component(puzzle.rows[2]).should == [0,0,0]
   end
 
   it "should solve a 1x1 puzzle" do
@@ -41,5 +43,11 @@ describe SudokuSolver do
     puzzle = SudokuPuzzle.new([[0,0], [0,2]])
     solver = SudokuSolver.new(puzzle)
     solver.solve.should == SudokuPuzzle.new([[2,1], [1,2]])
+  end
+
+  it "should solve an easy 3x3 puzzle" do
+    puzzle = SudokuPuzzle.new([[1,2,0], [2,0,0], [0,0,2]])
+    solver = SudokuSolver.new(puzzle)
+    solver.solve.should == SudokuPuzzle.new([[1,2,3], [2,3,1], [3,1,2]])
   end
 end
