@@ -1,6 +1,7 @@
 class SudokuSolver
   def initialize(puzzle)
     @puzzle = puzzle
+    freeze
   end
 
   def solve

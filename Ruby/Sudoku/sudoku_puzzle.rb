@@ -3,8 +3,8 @@ require 'matrix'
 class SudokuPuzzle
   def initialize(grid_rows)
     @grid = Matrix[*grid_rows]
-    validate
     freeze
+    validate
   end
 
   def validate
