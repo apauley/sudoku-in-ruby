@@ -40,6 +40,12 @@ class SudokuSolver
     improved_puzzle = SudokuPuzzle.new(improved_rows)
 
     improved_columns = improve_components(improved_puzzle.columns)
-    return self.class.new(SudokuPuzzle.columns(improved_columns)).solve
+    improved_puzzle = SudokuPuzzle.columns(improved_columns)
+
+    if improved_puzzle == @puzzle
+      return @puzzle
+    else
+      return self.class.new(improved_puzzle).solve
+    end
   end
 end
