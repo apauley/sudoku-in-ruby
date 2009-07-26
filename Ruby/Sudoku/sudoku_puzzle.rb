@@ -68,11 +68,11 @@ class SudokuPuzzle
   end
 
   def rows
-    return @grid.row_vectors.collect {|each| each.to_a}
+    return grid.row_vectors.collect {|each| each.to_a}
   end
 
   def columns
-    return @grid.column_vectors.collect {|each| each.to_a}
+    return grid.column_vectors.collect {|each| each.to_a}
   end
 
   def cell(row_index, column_index)
@@ -81,12 +81,10 @@ class SudokuPuzzle
   end
 
   def solved?
-    grid.to_a.each {|x|
-      x.each {|y|
-        if y == 0
-          return false
-        end
-      }
+    grid.to_a.flatten.each {|x|
+      if x == 0
+        return false
+      end
     }
     return true
   end
