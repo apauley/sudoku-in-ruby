@@ -28,7 +28,7 @@ class CompleteLastRemainingAlgorithm < SudokuAlgorithm
     return new_component
   end
 
-  def improve_components(an_array)
+  def fill_components(an_array)
     improved_components = []
     an_array.each {|component|
       new_component = fill_remaining_element(component)
@@ -42,10 +42,10 @@ class CompleteLastRemainingAlgorithm < SudokuAlgorithm
       return @puzzle
     end
 
-    improved_rows = improve_components(@puzzle.rows)
+    improved_rows = fill_components(@puzzle.rows)
     improved_puzzle = SudokuPuzzle.new(improved_rows)
 
-    improved_columns = improve_components(improved_puzzle.columns)
+    improved_columns = fill_components(improved_puzzle.columns)
     improved_puzzle = SudokuPuzzle.columns(improved_columns)
 
     if improved_puzzle == @puzzle

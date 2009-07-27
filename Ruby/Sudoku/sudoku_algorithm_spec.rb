@@ -15,11 +15,11 @@ describe CompleteLastRemainingAlgorithm do
     algorithm.fill_remaining_element(puzzle.rows[0]).should == [1,2,3]
   end
 
-  it "should not change a row with too little info when trying to improve a grid component" do
+  it "should not change rows with too little info when trying to improve a grid component" do
     rows = [[0,3,0], [1,0,0], [0,0,0]]
     puzzle = SudokuPuzzle.new(rows)
     algorithm = CompleteLastRemainingAlgorithm.new(puzzle)
-    algorithm.improve_components(rows).should == rows
+    algorithm.fill_components(rows).should == rows
   end
 
   it "should do what it can on a puzzle with too little info and quit" do
