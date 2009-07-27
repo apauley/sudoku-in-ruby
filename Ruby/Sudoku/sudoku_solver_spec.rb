@@ -8,7 +8,7 @@ describe SudokuSolver do
   end
 
   it "should complete the last remaining element of a grid component" do
-    puzzle = SudokuPuzzle.new([[0]])
+    puzzle = SudokuPuzzle.empty(1)
     solver = SudokuSolver.new(puzzle)
     solver.improve_grid_component(puzzle.rows[0]).should == [1]
 

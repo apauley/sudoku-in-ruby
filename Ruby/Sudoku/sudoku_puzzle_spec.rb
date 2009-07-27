@@ -18,7 +18,9 @@ describe SudokuPuzzle do
   end
 
   it "should allow the creation of an empty puzzle" do
-    SudokuPuzzle.new([[0,0], [0,0]])
+    puzzle = SudokuPuzzle.empty(3)
+    puzzle.rows.should == [[0,0,0], [0,0,0], [0,0,0]]
+    puzzle.columns.should == [[0,0,0], [0,0,0], [0,0,0]]
   end
 
   it "should only allow square grids" do
@@ -40,13 +42,13 @@ describe SudokuPuzzle do
   it "should know when another puzzle is equal to itself" do
     a_puzzle = SudokuPuzzle.new([[1]])
     same_puzzle = SudokuPuzzle.new([[1]])
-    empty_puzzle = SudokuPuzzle.new([[0]])
+    empty_puzzle = SudokuPuzzle.empty(1)
     a_puzzle.should == same_puzzle
     a_puzzle.should_not == empty_puzzle
   end
 
   it "should know whether it is solved" do
-    empty_puzzle = SudokuPuzzle.new([[0]])
+    empty_puzzle = SudokuPuzzle.empty(1)
     solved_puzzle = SudokuPuzzle.new([[1,2,3], [2,3,1], [3,1,2]])
     empty_puzzle.solved?.should == false
     solved_puzzle.solved?.should == true
@@ -70,13 +72,13 @@ describe SudokuPuzzle do
   end
 
   it "should know its expected component total" do
-    puzzle = SudokuPuzzle.new([[0]])
+    puzzle = SudokuPuzzle.empty(1)
     puzzle.component_total.should == 1
 
-    puzzle = SudokuPuzzle.new([[0,0], [0,0]])
+    puzzle = SudokuPuzzle.empty(2)
     puzzle.component_total.should == 3
 
-    puzzle = SudokuPuzzle.new([[0,0,0], [0,0,0], [0,0,0]])
+    puzzle = SudokuPuzzle.empty(3)
     puzzle.component_total.should == 6
   end
 end

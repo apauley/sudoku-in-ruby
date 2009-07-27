@@ -7,6 +7,11 @@ class SudokuPuzzle
     return SudokuPuzzle.new(matrix.to_a)
   end
 
+  def SudokuPuzzle.empty(puzzle_size)
+    matrix = Matrix.zero(puzzle_size)
+    return SudokuPuzzle.new(matrix.to_a)
+  end
+
   def initialize(grid_rows)
     @grid = Matrix[*grid_rows]
     freeze
