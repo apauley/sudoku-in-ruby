@@ -43,11 +43,10 @@ class SudokuPuzzle
 
   def validate_no_duplicates(an_array)
     an_array.each {|list|
-      list_without_zeros = list.select {|each| each != 0}
-      if list_without_zeros.uniq != list_without_zeros
+      list.delete(0)
+      if list.uniq != list
         raise
-      end
-    }
+      end}
   end
 
   def ==(anotherObject)
