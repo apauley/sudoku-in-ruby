@@ -4,6 +4,12 @@ class SudokuAlgorithm
     freeze
   end
 
+  def solve
+    raise 'Please implement in subclass'
+  end
+end
+
+class CompleteLastRemainingAlgorithm < SudokuAlgorithm
   def improve_grid_component(an_array)
     component_without_zeros = an_array.select {|each| each != 0}
     if (@puzzle.size - component_without_zeros.size) > 1

@@ -1,7 +1,7 @@
 class SudokuSolver
   def initialize(puzzle)
     @puzzle = puzzle
-    @algoritm = SudokuAlgorithm.new(puzzle)
+    @algoritm = CompleteLastRemainingAlgorithm.new(puzzle)
     freeze
   end
 
