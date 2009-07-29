@@ -18,6 +18,10 @@ class SudokuPuzzle
     validate
   end
 
+  def to_s
+    return @grid.to_s
+  end
+
   def validate
     validate_grid
     validate_entries
@@ -45,7 +49,7 @@ class SudokuPuzzle
     an_array.each {|list|
       list.delete(0)
       if list.uniq != list
-        raise
+        raise 'Duplicates in component ' + an_array.to_s + ' for ' + self.to_s
       end}
   end
 
@@ -88,7 +92,8 @@ class SudokuPuzzle
   def solved?
     row_totals = rows.collect {|each| sum(each) }
     column_totals = columns.collect {|each| sum(each) }
+    uniq_totals = row_totals|column_totals
 
-    return sum((row_totals|column_totals)) == component_total
+    return ((uniq_totals.size == 1) and (sum(uniq_totals) == component_total))
   end
 end
