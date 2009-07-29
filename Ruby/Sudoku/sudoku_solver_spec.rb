@@ -16,7 +16,7 @@ describe SudokuSolver do
   it "should solve a 2x2 puzzle" do
     puzzle = SudokuPuzzle.new([[1,0], [0,0]])
     solver = SudokuSolver.new(puzzle)
-#    solver.solve.should == SudokuPuzzle.new([[1,2], [2,1]])
+    solver.solve.should == SudokuPuzzle.new([[1,2], [2,1]])
 
     puzzle = SudokuPuzzle.new([[0,0], [0,2]])
     solver = SudokuSolver.new(puzzle)
