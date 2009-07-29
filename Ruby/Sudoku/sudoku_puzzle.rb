@@ -101,7 +101,7 @@ class SudokuPuzzle
   end
 
   def blocks
-    return rows
+    return rows.collect{|x| [x[0..1], x[2..3]]}
   end
 
   def cell(row_index, column_index)

@@ -97,6 +97,10 @@ describe SudokuPuzzle do
     SudokuPuzzle.empty(5).block_size.should == 1
   end
 
+  it "should know its blocks" do
+    SudokuPuzzle.empty(4).blocks[0].should == [[0,0], [0,0]]
+  end
+
   it "should know its expected component total" do
     puzzle = SudokuPuzzle.empty(1)
     puzzle.component_total.should == 1
