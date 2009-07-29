@@ -3,7 +3,7 @@ require 'sudoku_puzzle'
 describe SudokuPuzzle do
   it "should represent itself as a nice string" do
     puzzle = SudokuPuzzle.new([[1,0], [2,1]])
-    puzzle.to_s.should == "10\n21\n\n"
+    puzzle.to_s.should == "2x2 puzzle:\n10\n21\n\n"
   end
 
   it "should use grid rows for default construction" do
@@ -76,6 +76,11 @@ describe SudokuPuzzle do
     puzzle.cell(1, 1).value.should == 2
     puzzle.cell(2, 2).value.should == 0
     puzzle.cell(2, 1).value.should == 1
+  end
+
+  it "should know its blocks" do
+    puzzle = SudokuPuzzle.empty(1)
+    puzzle.blocks[0].should == [0]
   end
 
   it "should know its expected component total" do

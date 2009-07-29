@@ -15,11 +15,14 @@ class SudokuPuzzle
   def initialize(grid_rows)
     @grid = Matrix[*grid_rows]
     freeze
+    puts self.to_s
     validate
   end
 
   def to_s
-    return (rows.collect {|row| row.to_s + "\n"}).to_s + "\n"
+    grid_s = (rows.collect {|row| row.to_s + "\n"}).to_s + "\n"
+    preamble = size.to_s + "x" + size.to_s + " puzzle:\n"
+    return preamble + grid_s
   end
 
   def validate
@@ -82,6 +85,10 @@ class SudokuPuzzle
 
   def columns
     return grid.column_vectors.collect {|each| each.to_a}
+  end
+
+  def blocks
+    return rows
   end
 
   def cell(row_index, column_index)

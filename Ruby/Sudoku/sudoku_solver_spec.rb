@@ -28,4 +28,11 @@ describe SudokuSolver do
     solver = SudokuSolver.new(puzzle)
     solver.solve.should == SudokuPuzzle.new([[2,1,3], [1,3,2], [3,2,1]])
   end
+
+  it "should solve a 4x4 puzzle" do
+    puzzle = SudokuPuzzle.empty(4)
+    solver = SudokuSolver.new(puzzle)
+    solver.solve.solved?.should == true
+  end
+
 end
