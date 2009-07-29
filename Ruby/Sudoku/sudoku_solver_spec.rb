@@ -24,8 +24,8 @@ describe SudokuSolver do
   end
 
   it "should solve a 3x3 puzzle" do
-    puzzle = SudokuPuzzle.new([[1,2,0], [2,0,0], [0,0,0]])
+    puzzle = SudokuPuzzle.new([[2,1,0], [1,0,0], [0,0,0]])
     solver = SudokuSolver.new(puzzle)
-    solver.solve.should == SudokuPuzzle.new([[1,2,3], [2,3,1], [3,1,2]])
+    solver.solve.should == SudokuPuzzle.new([[2,1,3], [1,3,2], [3,2,1]])
   end
 end
