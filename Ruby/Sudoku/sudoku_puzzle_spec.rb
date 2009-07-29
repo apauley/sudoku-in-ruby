@@ -78,9 +78,23 @@ describe SudokuPuzzle do
     puzzle.cell(2, 1).value.should == 1
   end
 
-  it "should know its blocks" do
-    puzzle = SudokuPuzzle.empty(1)
-    puzzle.blocks[0].should == [0]
+  it "should know if it is a square puzzle" do
+    SudokuPuzzle.empty(1).square?.should == true
+    SudokuPuzzle.empty(2).square?.should == false
+    SudokuPuzzle.empty(4).square?.should == true
+    SudokuPuzzle.empty(9).square?.should == true
+  end
+
+  it "should know its block size" do
+    SudokuPuzzle.empty(1).block_size.should == 1
+    SudokuPuzzle.empty(4).block_size.should == 2
+    SudokuPuzzle.empty(9).block_size.should == 3
+  end
+
+  it "should have block size of 1 for non-square puzzles" do
+    SudokuPuzzle.empty(2).block_size.should == 1
+    SudokuPuzzle.empty(3).block_size.should == 1
+    SudokuPuzzle.empty(5).block_size.should == 1
   end
 
   it "should know its expected component total" do

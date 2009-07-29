@@ -87,6 +87,19 @@ class SudokuPuzzle
     return grid.column_vectors.collect {|each| each.to_a}
   end
 
+  def square?
+    x = Math.sqrt(size)
+    return (x.to_i == x)
+  end
+
+  def block_size
+    if square?
+      return Math.sqrt(size)
+    else
+      return 1
+    end
+  end
+
   def blocks
     return rows
   end
