@@ -19,7 +19,7 @@ class SudokuPuzzle
   end
 
   def to_s
-    return @grid.to_s
+    return (rows.collect {|row| row.to_s + "\n"}).to_s + "\n"
   end
 
   def validate

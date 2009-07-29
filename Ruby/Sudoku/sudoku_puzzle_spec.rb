@@ -1,6 +1,11 @@
 require 'sudoku_puzzle'
 
 describe SudokuPuzzle do
+  it "should represent itself as a nice string" do
+    puzzle = SudokuPuzzle.new([[1,0], [2,1]])
+    puzzle.to_s.should == "10\n21\n\n"
+  end
+
   it "should use grid rows for default construction" do
     puzzle = SudokuPuzzle.new([[1,0], [2,1]])
     puzzle.rows.should == [[1,0], [2,1]]
