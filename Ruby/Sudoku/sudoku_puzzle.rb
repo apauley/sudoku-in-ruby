@@ -102,10 +102,10 @@ class SudokuPuzzle
 
   def blocks
     b = []
-    b.push(@grid[0, 0..1]+@grid[1, 0..1])
-    b.push(@grid[0, 2..3]+@grid[1, 2..3])
-    b.push(@grid[2, 0..1]+@grid[3, 0..1])
-    b.push(@grid[2, 2..3]+@grid[3, 2..3])
+    b.push(@grid[0, 0..block_size-1]+@grid[1, 0..block_size-1])
+    b.push(@grid[0, block_size..size-1]+@grid[1, block_size..size-1])
+    b.push(@grid[2, 0..block_size-1]+@grid[3, 0..block_size-1])
+    b.push(@grid[2, block_size..size-1]+@grid[3, block_size..size-1])
     return b
   end
 
