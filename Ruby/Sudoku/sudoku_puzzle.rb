@@ -30,6 +30,7 @@ class SudokuPuzzle
     validate_entries
     validate_no_duplicates(rows)
     validate_no_duplicates(columns)
+    validate_no_duplicates(blocks)
   end
 
   def validate_grid
@@ -101,12 +102,24 @@ class SudokuPuzzle
   end
 
   def blocks
+    if block_size == 2
+      return blocks4
+    else
+      return blocks1
+    end
+  end
+
+  def blocks4
     b = []
     b.push(@grid[0, 0..block_size-1]+@grid[1, 0..block_size-1])
     b.push(@grid[0, block_size..size-1]+@grid[1, block_size..size-1])
     b.push(@grid[2, 0..block_size-1]+@grid[3, 0..block_size-1])
     b.push(@grid[2, block_size..size-1]+@grid[3, block_size..size-1])
     return b
+  end
+
+  def blocks1
+    return rows
   end
 
   def cell(row_index, column_index)
