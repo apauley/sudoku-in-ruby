@@ -101,7 +101,12 @@ class SudokuPuzzle
   end
 
   def blocks
-    return rows.collect{|x| [x[0..1], x[2..3]]}
+    b = []
+    b.push(@grid[0, 0..1]+@grid[1, 0..1])
+    b.push(@grid[0, 2..3]+@grid[1, 2..3])
+    b.push(@grid[2, 0..1]+@grid[3, 0..1])
+    b.push(@grid[2, 2..3]+@grid[3, 2..3])
+    return b
   end
 
   def cell(row_index, column_index)

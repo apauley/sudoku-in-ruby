@@ -98,7 +98,13 @@ describe SudokuPuzzle do
   end
 
   it "should know its blocks" do
-    SudokuPuzzle.empty(4).blocks[0].should == [[0,0], [0,0]]
+    SudokuPuzzle.empty(4).blocks[0].should == [0,0,0,0]
+    puzzle = SudokuPuzzle.new([[4,2,3,1], [1,3,4,2], [3,1,2,4], [2,4,1,3]])
+    puzzle.blocks.size.should == puzzle.size
+    puzzle.blocks[0].should == [4,2,1,3]
+    puzzle.blocks[1].should == [3,1,4,2]
+    puzzle.blocks[2].should == [3,1,2,4]
+    puzzle.blocks[3].should == [2,4,1,3]
   end
 
   it "should know its expected component total" do
