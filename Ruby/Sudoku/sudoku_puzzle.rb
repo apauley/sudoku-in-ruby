@@ -115,17 +115,17 @@ class SudokuPuzzle
   def blocks9
     b = []
 
-    b.push((0..2).to_a.collect{|x| @grid[x, 0...block_size]})
-    b.push((0..2).to_a.collect{|x| @grid[x, block_size...6]})
-    b.push((0..2).to_a.collect{|x| @grid[x, 6...size]})
+    b.push((0..2).to_a.collect{|x| @grid[x, 0..2]})
+    b.push((0..2).to_a.collect{|x| @grid[x, 3..5]})
+    b.push((0..2).to_a.collect{|x| @grid[x, 6..8]})
 
-    b.push((3..5).to_a.collect{|x| @grid[x, 0...block_size]})
-    b.push((3..5).to_a.collect{|x| @grid[x, block_size...6]})
-    b.push((3..5).to_a.collect{|x| @grid[x, 6...size]})
+    b.push((3..5).to_a.collect{|x| @grid[x, 0..2]})
+    b.push((3..5).to_a.collect{|x| @grid[x, 3..5]})
+    b.push((3..5).to_a.collect{|x| @grid[x, 6..8]})
 
-    b.push((6..8).to_a.collect{|x| @grid[x, 0...block_size]})
-    b.push((6..8).to_a.collect{|x| @grid[x, block_size...6]})
-    b.push((6..8).to_a.collect{|x| @grid[x, 6...size]})
+    b.push((6..8).to_a.collect{|x| @grid[x, 0..2]})
+    b.push((6..8).to_a.collect{|x| @grid[x, 3..5]})
+    b.push((6..8).to_a.collect{|x| @grid[x, 6..8]})
 
     return b
   end
