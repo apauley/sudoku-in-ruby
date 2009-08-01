@@ -94,14 +94,6 @@ class SudokuPuzzle
     return (x.to_i == x)
   end
 
-  def block_size
-    if square?
-      return Math.sqrt(size).to_i
-    else
-      return 1
-    end
-  end
-
   def blocks
     b = []
     block_ranges.each {|row_range|
@@ -122,14 +114,12 @@ class SudokuPuzzle
     end
   end
 
-  def blocks_for_ranges(ranges)
-    b = []
-    ranges.each {|row_range|
-      ranges.each {|column_range|
-        b.push(row_range.to_a.collect {|x| @grid[x, column_range]})
-      }
-    }
-    return b
+  def block_size
+    if square?
+      return Math.sqrt(size).to_i
+    else
+      return 1
+    end
   end
 
   def cell(row_index, column_index)
