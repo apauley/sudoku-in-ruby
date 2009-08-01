@@ -104,11 +104,11 @@ class SudokuPuzzle
 
   def blocks
     if block_size == 3
-      return blocks9
+      return blocks_for_ranges([0..2, 3..5, 6..8])
     elsif block_size == 2
-      return blocks4
+      return blocks_for_ranges([0..1, 2..3])
     else
-      return blocks1
+      return blocks_for_ranges([0..0])
     end
   end
 
@@ -120,18 +120,6 @@ class SudokuPuzzle
       }
     }
     return b
-  end
-
-  def blocks9
-    return blocks_for_ranges([0..2, 3..5, 6..8])
-  end
-
-  def blocks4
-    return blocks_for_ranges([0..1, 2..3])
-  end
-
-  def blocks1
-    return rows.flatten.collect {|x| [x]}
   end
 
   def cell(row_index, column_index)

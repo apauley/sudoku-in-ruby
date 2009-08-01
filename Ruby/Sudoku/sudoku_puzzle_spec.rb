@@ -138,10 +138,6 @@ describe SudokuPuzzle do
     puzzle.blocks[8].should == [[0,0,0], [0,0,9], [4,0,0]]
   end
 
-  it "should return each entry as a block for non-square puzzles" do
-    SudokuPuzzle.empty(2).blocks.should == [[0], [0], [0], [0]]
-  end
-
   it "should know its expected component total" do
     puzzle = SudokuPuzzle.empty(1)
     puzzle.component_total.should == 1
