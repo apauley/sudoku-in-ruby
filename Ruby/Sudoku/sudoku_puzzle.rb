@@ -104,7 +104,7 @@ class SudokuPuzzle
 
   def blocks
     if block_size == 3
-      return b9
+      return blocks9
     elsif block_size == 2
       return blocks4
     else
@@ -112,21 +112,7 @@ class SudokuPuzzle
     end
   end
 
-  def bl
-    b1 = (0...block_size).to_a.collect{|x| @grid[x, 0...block_size]}
-    return b1
-  end
-
   def blocks9
-    b = []
-    b.push(@grid[0, 0..block_size-1]+@grid[1, 0..block_size-1]+@grid[2, 0..block_size-1])
-    b.push(@grid[0, block_size..size-1]+@grid[1, block_size..size-1])
-    b.push(@grid[2, 0..block_size-1]+@grid[3, 0..block_size-1])
-    b.push(@grid[2, block_size..size-1]+@grid[3, block_size..size-1])
-    return b
-  end
-
-  def b9
     b = []
 
     b.push((0...block_size).to_a.collect{|x| @grid[x, 0...block_size]})
