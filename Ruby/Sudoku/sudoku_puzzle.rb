@@ -103,12 +103,16 @@ class SudokuPuzzle
   end
 
   def blocks
+    return blocks_for_ranges(block_ranges)
+  end
+
+  def block_ranges
     if block_size == 3
-      return blocks_for_ranges([0..2, 3..5, 6..8])
+      return [0..2, 3..5, 6..8]
     elsif block_size == 2
-      return blocks_for_ranges([0..1, 2..3])
+      return [0..1, 2..3]
     else
-      return blocks_for_ranges([0..0])
+      return [0..0]
     end
   end
 
