@@ -123,6 +123,10 @@ class SudokuPuzzle
       b.push(ranges[1].to_a.collect {|x| @grid[x, range]})
     }
 
+    ranges.each {|range|
+      b.push(ranges[2].to_a.collect {|x| @grid[x, range]})
+    }
+
 #     b.push((0..2).to_a.collect{|x| @grid[x, 0..2]})
 #     b.push((0..2).to_a.collect{|x| @grid[x, 3..5]})
 #     b.push((0..2).to_a.collect{|x| @grid[x, 6..8]})
@@ -131,9 +135,9 @@ class SudokuPuzzle
 #     b.push((3..5).to_a.collect{|x| @grid[x, 3..5]})
 #     b.push((3..5).to_a.collect{|x| @grid[x, 6..8]})
 
-    b.push((6..8).to_a.collect{|x| @grid[x, 0..2]})
-    b.push((6..8).to_a.collect{|x| @grid[x, 3..5]})
-    b.push((6..8).to_a.collect{|x| @grid[x, 6..8]})
+#     b.push((6..8).to_a.collect{|x| @grid[x, 0..2]})
+#     b.push((6..8).to_a.collect{|x| @grid[x, 3..5]})
+#     b.push((6..8).to_a.collect{|x| @grid[x, 6..8]})
 
     return b
   end
