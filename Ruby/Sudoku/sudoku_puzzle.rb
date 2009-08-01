@@ -103,7 +103,13 @@ class SudokuPuzzle
   end
 
   def blocks
-    return blocks_for_ranges(block_ranges)
+    b = []
+    block_ranges.each {|row_range|
+      block_ranges.each {|column_range|
+        b.push(row_range.to_a.collect {|x| @grid[x, column_range]})
+      }
+    }
+    return b
   end
 
   def block_ranges
