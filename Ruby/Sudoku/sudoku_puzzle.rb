@@ -115,30 +115,12 @@ class SudokuPuzzle
   def blocks9
     b = []
     ranges = [0..2, 3..5, 6..8]
-    ranges.each {|range|
-      b.push(ranges[0].to_a.collect {|x| @grid[x, range]})
+
+    ranges.each {|row_range|
+      ranges.each {|range|
+        b.push(row_range.to_a.collect {|x| @grid[x, range]})
+      }
     }
-
-    ranges.each {|range|
-      b.push(ranges[1].to_a.collect {|x| @grid[x, range]})
-    }
-
-    ranges.each {|range|
-      b.push(ranges[2].to_a.collect {|x| @grid[x, range]})
-    }
-
-#     b.push((0..2).to_a.collect{|x| @grid[x, 0..2]})
-#     b.push((0..2).to_a.collect{|x| @grid[x, 3..5]})
-#     b.push((0..2).to_a.collect{|x| @grid[x, 6..8]})
-
-#     b.push((3..5).to_a.collect{|x| @grid[x, 0..2]})
-#     b.push((3..5).to_a.collect{|x| @grid[x, 3..5]})
-#     b.push((3..5).to_a.collect{|x| @grid[x, 6..8]})
-
-#     b.push((6..8).to_a.collect{|x| @grid[x, 0..2]})
-#     b.push((6..8).to_a.collect{|x| @grid[x, 3..5]})
-#     b.push((6..8).to_a.collect{|x| @grid[x, 6..8]})
-
     return b
   end
 
