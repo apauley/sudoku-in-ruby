@@ -112,28 +112,22 @@ class SudokuPuzzle
     end
   end
 
-  def blocks9
+  def blocks_for_ranges(ranges)
     b = []
-    ranges = [0..2, 3..5, 6..8]
-
     ranges.each {|row_range|
-      ranges.each {|range|
-        b.push(row_range.to_a.collect {|x| @grid[x, range]})
+      ranges.each {|column_range|
+        b.push(row_range.to_a.collect {|x| @grid[x, column_range]})
       }
     }
     return b
   end
 
-  def blocks4
-    b = []
-    ranges = [0..1, 2..3]
+  def blocks9
+    return blocks_for_ranges([0..2, 3..5, 6..8])
+  end
 
-    ranges.each {|row_range|
-      ranges.each {|range|
-        b.push(row_range.to_a.collect {|x| @grid[x, range]})
-      }
-    }
-    return b
+  def blocks4
+    return blocks_for_ranges([0..1, 2..3])
   end
 
   def blocks1
