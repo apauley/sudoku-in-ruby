@@ -104,11 +104,41 @@ describe SudokuPuzzle do
   it "should know its blocks" do
     puzzle = SudokuPuzzle.new([[4,2,3,1], [1,3,4,2], [3,1,2,4], [2,4,1,3]])
     puzzle.blocks.size.should == puzzle.size
-    puzzle.blocks[0].should == [4,2,1,3]
-    puzzle.blocks[1].should == [3,1,4,2]
-    puzzle.blocks[2].should == [3,1,2,4]
-    puzzle.blocks[3].should == [2,4,1,3]
-    #SudokuPuzzle.empty(9).blocks[0].should == [0,0,0,0,0,0,0,0,0]
+    puzzle.blocks[0].should == [[4,2],[1,3]]
+    puzzle.blocks[1].should == [[3,1],[4,2]]
+    puzzle.blocks[2].should == [[3,1],[2,4]]
+    puzzle.blocks[3].should == [[2,4],[1,3]]
+  end
+
+  it "should return blocks for 9x9 puzzles correctly" do
+    rows = [[0,4,7, 0,0,0, 0,0,0],
+            [0,0,5, 0,0,0, 0,0,0],
+            [8,0,0, 0,0,9, 0,1,0],
+
+            [0,0,0, 0,0,0, 6,2,3],
+            [5,0,0, 0,0,0, 0,7,0],
+            [0,2,0, 0,8,4, 9,0,0],
+
+            [2,0,0, 0,9,0, 0,0,0],
+            [0,0,0, 3,2,0, 0,0,9],
+            [0,8,0, 7,0,0, 4,0,0],
+           ]
+    ##########################################################
+    # puzzle = SudokuPuzzle.new(rows)                        #
+    # puzzle.blocks[0].should == [[0,4,7], [0,0,5], [8,0,0]] #
+    # puzzle.blocks[1].should == [[0,0,0], [0,0,0], [0,0,9]] #
+    # puzzle.blocks[2].should == [[0,0,0], [0,0,0], [0,1,0]] #
+    # puzzle.blocks[3].should == [[0,0,0], [5,0,0], [0,2,0]] #
+    # puzzle.blocks[4].should == [[0,0,0], [0,0,0], [0,8,4]] #
+    # puzzle.blocks[5].should == [[6,2,3], [0,7,0], [9,0,0]] #
+    # puzzle.blocks[6].should == [[2,0,0], [0,0,0], [0,8,0]] #
+    # puzzle.blocks[7].should == [[0,9,0], [3,2,0], [7,0,0]] #
+    # puzzle.blocks[8].should == [[0,0,0], [0,0,9], [4,0,0]] #
+    ##########################################################
+  end
+
+  it "should return each entry as a block for non-square puzzles" do
+    SudokuPuzzle.empty(2).blocks.should == [[0], [0], [0], [0]]
   end
 
   it "should know its expected component total" do

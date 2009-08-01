@@ -50,7 +50,8 @@ class SudokuPuzzle
   end
 
   def validate_no_duplicates(an_array)
-    an_array.each {|list|
+    an_array.each {|x|
+      list = x.flatten
       list.delete(0)
       if list.uniq != list
         raise 'Duplicates in component ' + an_array.to_s + ' for ' + self.to_s
@@ -95,31 +96,55 @@ class SudokuPuzzle
 
   def block_size
     if square?
-      return Math.sqrt(size)
+      return Math.sqrt(size).to_i
     else
       return 1
     end
   end
 
   def blocks
-    if block_size == 2
+    if block_size == 3
+      return b9
+    elsif block_size == 2
       return blocks4
     else
       return blocks1
     end
   end
 
-  def blocks4
+  def bl
+    b1 = (0...block_size).to_a.collect{|x| @grid[x, 0...block_size]}
+    return b1
+  end
+
+  def blocks9
     b = []
-    b.push(@grid[0, 0..block_size-1]+@grid[1, 0..block_size-1])
+    b.push(@grid[0, 0..block_size-1]+@grid[1, 0..block_size-1]+@grid[2, 0..block_size-1])
     b.push(@grid[0, block_size..size-1]+@grid[1, block_size..size-1])
     b.push(@grid[2, 0..block_size-1]+@grid[3, 0..block_size-1])
     b.push(@grid[2, block_size..size-1]+@grid[3, block_size..size-1])
     return b
   end
 
+  def b9
+    b = []
+    b.push((0...block_size).to_a.collect{|x| @grid[x, 0...block_size]})
+    b.push((0...block_size).to_a.collect{|x| @grid[x, block_size...size]})
+    b.push((block_size...size).to_a.collect{|x| @grid[x, 0...block_size]})
+    b.push((block_size...size).to_a.collect{|x| @grid[x, block_size...size]})
+    return b
+  end
+
+  def blocks4
+    b = []
+    b.push((0...block_size).to_a.collect{|x| @grid[x, 0...block_size]})
+    b.push((0...block_size).to_a.collect{|x| @grid[x, block_size...size]})
+    b.push((block_size...size).to_a.collect{|x| @grid[x, 0...block_size]})
+    b.push((block_size...size).to_a.collect{|x| @grid[x, block_size...size]})
+  end
+
   def blocks1
-    return rows
+    return rows.flatten.collect {|x| [x]}
   end
 
   def cell(row_index, column_index)
