@@ -1,5 +1,4 @@
 require 'matrix'
-require 'sudoku_cell'
 
 class SudokuPuzzle
   def SudokuPuzzle.columns(grid_columns)
@@ -120,11 +119,6 @@ class SudokuPuzzle
     else
       return 1
     end
-  end
-
-  def cell(row_index, column_index)
-    cell_value = @grid[row_index-1, column_index-1]
-    return SudokuCell.new(cell_value)
   end
 
   def solved?
