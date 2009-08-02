@@ -41,11 +41,11 @@ describe SudokuPuzzle do
   end
 
   it "should not allow duplicate values in columns" do
-    lambda {SudokuPuzzle.new([[2,0], [2,0]])}.should raise_error()
+    lambda {SudokuPuzzle.new([[2,0], [2,0]])}.should raise_error(DuplicateComponentValueError)
   end
 
   it "should not allow duplicate values in blocks" do
-    lambda {SudokuPuzzle.new([[1,2,3,4], [2,0,0,0], [3,0,0,0], [4,0,0,0]])}.should raise_error()
+    lambda {SudokuPuzzle.new([[1,2,3,4], [2,0,0,0], [3,0,0,0], [4,0,0,0]])}.should raise_error(DuplicateComponentValueError)
   end
 
   it "should know when another puzzle is equal to itself" do
