@@ -43,7 +43,7 @@ class SudokuPuzzle
       if x > size
         #FIXME: Ruby string interpolation?
         msg = "Invalid entry " + x.to_s + " for puzzle with size " + size.to_s
-        raise msg
+        raise TooLargeCellValueError, msg
       end
     }
   end

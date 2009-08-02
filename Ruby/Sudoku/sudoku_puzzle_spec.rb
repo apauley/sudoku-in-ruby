@@ -33,7 +33,7 @@ describe SudokuPuzzle do
   end
 
   it "should not allow cell values greater than the puzzle size" do
-    lambda {SudokuPuzzle.new([[2]])}.should raise_error()
+    lambda {SudokuPuzzle.new([[2]])}.should raise_error(TooLargeCellValueError)
   end
 
   it "should not allow duplicate values in rows" do
