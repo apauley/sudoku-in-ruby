@@ -1,4 +1,5 @@
 require 'matrix'
+require 'sudoku_exceptions'
 
 class SudokuPuzzle
   def SudokuPuzzle.columns(grid_columns)
@@ -33,7 +34,7 @@ class SudokuPuzzle
 
   def validate_grid
     if not @grid.square?
-      raise
+      raise NonSquareGridError
     end
   end
 

@@ -29,7 +29,7 @@ describe SudokuPuzzle do
   end
 
   it "should only allow square grids" do
-    lambda {SudokuPuzzle.new([[1,2]])}.should raise_error()
+    lambda {SudokuPuzzle.new([[1,2]])}.should raise_error(NonSquareGridError)
   end
 
   it "should not allow cell values greater than the puzzle size" do
