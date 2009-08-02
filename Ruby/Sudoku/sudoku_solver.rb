@@ -1,3 +1,5 @@
+require 'sudoku_algorithm'
+
 class SudokuSolver
   def initialize(puzzle)
     @algorithm = CompleteLastRemainingAlgorithm.new(puzzle)
