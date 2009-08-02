@@ -37,7 +37,7 @@ describe SudokuPuzzle do
   end
 
   it "should not allow duplicate values in rows" do
-    lambda {SudokuPuzzle.new([[1,1], [0,0]])}.should raise_error()
+    lambda {SudokuPuzzle.new([[1,1], [0,0]])}.should raise_error(DuplicateComponentValueError)
   end
 
   it "should not allow duplicate values in columns" do

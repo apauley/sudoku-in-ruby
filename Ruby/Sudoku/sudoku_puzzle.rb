@@ -53,7 +53,8 @@ class SudokuPuzzle
       list = x.flatten
       list.delete(0)
       if list.uniq != list
-        raise 'Duplicates in component ' + an_array.to_s + ' for ' + self.to_s
+        msg = 'Duplicates in component ' + an_array.to_s + ' for ' + self.to_s
+        raise DuplicateComponentValueError, msg
       end}
   end
 
