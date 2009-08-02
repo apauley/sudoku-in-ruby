@@ -26,7 +26,7 @@ class TryYourLuckAlgorithm < SudokuAlgorithm
 
   def try_luck_with(elements, puzzlerows)
     if elements.empty?
-      raise 'No elements!'
+      raise NoElementError, 'No elements!'
     end
 
     luckyrows = puzzlerows.clone
