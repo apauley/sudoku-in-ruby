@@ -5,7 +5,7 @@ class SudokuAlgorithm
   end
 
   def solve
-    raise 'Please implement this method in a subclass'
+    raise NotImplementedError, 'Please implement this method in a subclass'
   end
 end
 
