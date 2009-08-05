@@ -13,26 +13,17 @@ describe SudokuSolver do
     solver.solve.should == SudokuPuzzle.new([[1]])
   end
 
-  it "should solve a 2x2 puzzle" do
-    puzzle = SudokuPuzzle.new([[1,0], [0,0]])
-    solver = SudokuSolver.new(puzzle)
-    solver.solve.should == SudokuPuzzle.new([[1,2], [2,1]])
-
-    puzzle = SudokuPuzzle.new([[0,0], [0,2]])
-    solver = SudokuSolver.new(puzzle)
-    solver.solve.should == SudokuPuzzle.new([[2,1], [1,2]])
-  end
-
-  it "should solve a 3x3 puzzle" do
-    puzzle = SudokuPuzzle.new([[2,1,0], [0,0,0], [0,0,0]])
-    solver = SudokuSolver.new(puzzle)
-    solver.solve.should == SudokuPuzzle.new([[2,1,3], [1,3,2], [3,2,1]])
-  end
-
   it "should solve a 4x4 puzzle" do
     puzzle = SudokuPuzzle.empty(4)
     solver = SudokuSolver.new(puzzle)
-    solver.solve.solved?.should == true
+    solved_puzzle = solver.solve
+    rows = [[1,2,3,4],
+            [3,4,1,2],
+            [2,1,4,3],
+            [4,3,2,1]]
+
+    solved_puzzle.solved?.should == true
+    solved_puzzle.rows.should == rows
   end
 
 end

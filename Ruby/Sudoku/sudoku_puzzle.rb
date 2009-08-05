@@ -15,7 +15,6 @@ class SudokuPuzzle
   def initialize(grid_rows)
     @grid = Matrix[*grid_rows]
     freeze
-    puts to_s
     validate
   end
 
@@ -36,6 +35,11 @@ class SudokuPuzzle
   def validate_grid
     if not @grid.square?
       raise NonSquareGridError
+    end
+
+    x = Math.sqrt(size)
+    if x.to_i != x
+      raise NonSquarePuzzleError
     end
   end
 

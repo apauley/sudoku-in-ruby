@@ -4,6 +4,9 @@ end
 class NonSquareGridError < SudokuError
 end
 
+class NonSquarePuzzleError < SudokuError
+end
+
 class TooLargeCellValueError < SudokuError
 end
 

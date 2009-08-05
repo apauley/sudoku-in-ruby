@@ -42,8 +42,8 @@ rows = [[0,4,7, 0,0,0, 0,0,0],
         [0,8,0, 7,0,0, 4,0,0],
        ]
 
-#puzzle = SudokuPuzzle.empty(9)
-puzzle = SudokuPuzzle.columns(rows)
+puzzle = SudokuPuzzle.empty(4)
+#puzzle = SudokuPuzzle.columns(rows)
 
 solver = SudokuSolver.new(puzzle)
 puts solver.solve
