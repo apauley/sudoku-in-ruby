@@ -94,11 +94,6 @@ class SudokuPuzzle
     return grid.column_vectors.collect {|each| each.to_a}
   end
 
-  def square?
-    x = Math.sqrt(size)
-    return (x.to_i == x)
-  end
-
   def blocks
     b = []
     block_ranges.each {|row_range|
@@ -120,11 +115,7 @@ class SudokuPuzzle
   end
 
   def block_size
-    if square?
-      return Math.sqrt(size).to_i
-    else
-      return 1
-    end
+    return Math.sqrt(size).to_i
   end
 
   def solved?
