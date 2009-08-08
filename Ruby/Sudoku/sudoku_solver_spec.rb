@@ -1,6 +1,13 @@
 require 'sudoku_solver'
 
 describe SudokuSolver do
+  it "should return a start time" do
+    solver = SudokuSolver.new()
+    puzzle = SudokuPuzzle.empty(1)
+    results = solver.solve(puzzle)
+    results['start_time'].should < Time.now
+  end
+
   it "should return a solved puzzle unchanged" do
     solver = SudokuSolver.new()
     puzzle = SudokuPuzzle.new([[1]])

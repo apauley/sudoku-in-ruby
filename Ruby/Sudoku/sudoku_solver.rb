@@ -13,6 +13,7 @@ class SudokuSolver
   def solve(puzzle)
     results = {}
     algorithm = self.class.algorithms[@algorithm_to_use]
+    results['start_time'] = Time.now
     results['puzzle'] = algorithm.new(puzzle).solve
     return results
   end
