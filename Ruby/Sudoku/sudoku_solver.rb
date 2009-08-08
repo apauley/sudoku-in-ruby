@@ -1,12 +1,17 @@
 require 'sudoku_algorithm'
 
 class SudokuSolver
-  def initialize
+  def SudokuSolver.algorithms
+    {"try_your_luck" => TryYourLuckAlgorithm}
+  end
+
+  def initialize(algorithm_to_use="try_your_luck")
+    @algorithm_to_use = algorithm_to_use
     freeze
   end
 
   def solve(puzzle)
-    try_your_luck = TryYourLuckAlgorithm.new(puzzle)
-    return try_your_luck.solve
+    algorithm = self.class.algorithms[@algorithm_to_use]
+    return algorithm.new(puzzle).solve
   end
 end
