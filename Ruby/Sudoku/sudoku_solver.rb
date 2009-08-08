@@ -14,6 +14,6 @@ class SudokuSolver
     results = {}
     algorithm = self.class.algorithms[@algorithm_to_use]
     results['puzzle'] = algorithm.new(puzzle).solve
-    return results['puzzle']
+    return results
   end
 end
