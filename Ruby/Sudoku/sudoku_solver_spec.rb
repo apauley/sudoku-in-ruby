@@ -7,6 +7,7 @@ describe SudokuSolver do
     results = solver.solve(puzzle)
     results['start_time'].should < Time.now
     results['end_time'].should > results['start_time']
+    results['elapsed_time'].should == results['end_time'] - results['start_time']
   end
 
   it "should return a solved puzzle unchanged" do

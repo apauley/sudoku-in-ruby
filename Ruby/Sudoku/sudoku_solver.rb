@@ -16,6 +16,7 @@ class SudokuSolver
     results['start_time'] = Time.now
     results['puzzle'] = algorithm.new(puzzle).solve
     results['end_time'] = Time.now
+    results['elapsed_time'] = results['end_time'] - results['start_time']
     return results
   end
 end
