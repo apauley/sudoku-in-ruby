@@ -2,10 +2,10 @@ require 'sudoku_algorithm'
 
 class SudokuSolver
   def SudokuSolver.algorithms
-    {"try_your_luck" => RecursiveTrialAndErrorAlgorithm}
+    {"trial_and_error" => RecursiveTrialAndErrorAlgorithm}
   end
 
-  def initialize(algorithm_to_use="try_your_luck")
+  def initialize(algorithm_to_use="trial_and_error")
     @algorithm_to_use = algorithm_to_use
     freeze
   end
