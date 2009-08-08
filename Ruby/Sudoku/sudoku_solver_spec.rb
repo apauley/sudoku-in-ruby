@@ -2,21 +2,21 @@ require 'sudoku_solver'
 
 describe SudokuSolver do
   it "should return a solved puzzle unchanged" do
+    solver = SudokuSolver.new()
     puzzle = SudokuPuzzle.new([[1]])
-    solver = SudokuSolver.new(puzzle)
-    solver.solve.object_id.should == puzzle.object_id
+    solver.solve(puzzle).object_id.should == puzzle.object_id
   end
 
   it "should solve a 1x1 puzzle" do
+    solver = SudokuSolver.new()
     puzzle = SudokuPuzzle.new([[0]])
-    solver = SudokuSolver.new(puzzle)
-    solver.solve.should == SudokuPuzzle.new([[1]])
+    solver.solve(puzzle).should == SudokuPuzzle.new([[1]])
   end
 
   it "should solve a 4x4 puzzle" do
+    solver = SudokuSolver.new()
     puzzle = SudokuPuzzle.empty(4)
-    solver = SudokuSolver.new(puzzle)
-    solved_puzzle = solver.solve
+    solved_puzzle = solver.solve(puzzle)
     rows = [[1,2,3,4],
             [3,4,1,2],
             [2,1,4,3],
