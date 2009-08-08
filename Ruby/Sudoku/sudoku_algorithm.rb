@@ -9,7 +9,7 @@ class SudokuAlgorithm
   end
 end
 
-class TryYourLuckAlgorithm < SudokuAlgorithm
+class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
   def solve
     if @puzzle.solved?
       return @puzzle

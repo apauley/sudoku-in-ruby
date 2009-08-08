@@ -2,7 +2,7 @@ require 'sudoku_algorithm'
 
 class SudokuSolver
   def SudokuSolver.algorithms
-    {"try_your_luck" => TryYourLuckAlgorithm}
+    {"try_your_luck" => RecursiveTrialAndErrorAlgorithm}
   end
 
   def initialize(algorithm_to_use="try_your_luck")

@@ -1,7 +1,7 @@
 require 'sudoku_puzzle'
 require 'sudoku_algorithm'
 
-describe TryYourLuckAlgorithm do
+describe RecursiveTrialAndErrorAlgorithm do
   it "should find the first incomplete component index" do
     rows = [[1,2,3,4],
             [3,4,1,2],
@@ -9,7 +9,7 @@ describe TryYourLuckAlgorithm do
             [4,3,2,0]]
 
     puzzle = SudokuPuzzle.new(rows)
-    algorithm = TryYourLuckAlgorithm.new(puzzle)
+    algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
     algorithm.incomplete_component_index(puzzle.rows).should == 3
   end
 
@@ -20,7 +20,7 @@ describe TryYourLuckAlgorithm do
             [4,3,2,0]]
 
     puzzle = SudokuPuzzle.new(rows)
-    algorithm = TryYourLuckAlgorithm.new(puzzle)
+    algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
     newrow = algorithm.improve_component(puzzle.rows[1], 2)
     newrow.should == [3,2,1, 2]
     newrow = algorithm.improve_component(puzzle.rows[1], 3)
@@ -29,7 +29,7 @@ describe TryYourLuckAlgorithm do
 
   it "should return the row unchanged when it has nothing to do" do
     puzzle = SudokuPuzzle.new([[1]])
-    algorithm = TryYourLuckAlgorithm.new(puzzle)
+    algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
     newrow = algorithm.improve_component(puzzle.rows[0], 500)
     newrow.should == [1]
   end
@@ -40,7 +40,7 @@ describe TryYourLuckAlgorithm do
             [0,0,0,0],
             [4,3,2,0]]
     puzzle = SudokuPuzzle.new(rows)
-    algorithm = TryYourLuckAlgorithm.new(puzzle)
+    algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
     newpuzzle = algorithm.try_luck_with([1,2,3,4], puzzle.rows)
     rows = [[1,2,3,4],
             [3,4,1,2],
