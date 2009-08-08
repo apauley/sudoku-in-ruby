@@ -1,11 +1,12 @@
 require 'sudoku_solver'
 
 describe SudokuSolver do
-  it "should return a start time" do
+  it "should return time stats" do
     solver = SudokuSolver.new()
     puzzle = SudokuPuzzle.empty(1)
     results = solver.solve(puzzle)
     results['start_time'].should < Time.now
+    results['end_time'].should > results['start_time']
   end
 
   it "should return a solved puzzle unchanged" do

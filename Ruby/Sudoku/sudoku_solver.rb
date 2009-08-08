@@ -15,6 +15,7 @@ class SudokuSolver
     algorithm = self.class.algorithms[@algorithm_to_use]
     results['start_time'] = Time.now
     results['puzzle'] = algorithm.new(puzzle).solve
+    results['end_time'] = Time.now
     return results
   end
 end
