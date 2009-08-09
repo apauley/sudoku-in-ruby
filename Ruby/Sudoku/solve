@@ -57,11 +57,11 @@ rows = [[0,a,0, f,k,0, 0,0,0],
         [k,0,r, 0,0,0, 0,0,f],
        ]
 
-#puzzle = SudokuPuzzle.empty(4)
-puzzle = SudokuPuzzle.new(rows)
+puzzle = SudokuPuzzle.empty(4)
+#puzzle = SudokuPuzzle.new(rows)
 
-solver = SudokuSolver.new(puzzle)
-spuzzle = solver.solve
+solver = SudokuSolver.new
+spuzzle = solver.solve(puzzle)
 puts spuzzle
 
 dict = {0=>0,
@@ -69,4 +69,4 @@ dict = {0=>0,
   4=>'I', 5=>'J', 6=>'K',
   7=>'N', 8=>'R', 9=>'S' }
 
-puts spuzzle.rows.collect{|row| row.collect{|x| (dict[x])}.to_s + '|' }
+#puts spuzzle.rows.collect{|row| row.collect{|x| (dict[x])}.to_s + '|' }
