@@ -5,7 +5,7 @@ class SudokuSolver
     {"trial_and_error" => RecursiveTrialAndErrorAlgorithm}
   end
 
-  def initialize(algorithm_to_use="trial_and_error")
+  def initialize(puzzle, algorithm_to_use="trial_and_error")
     @algorithm_to_use = algorithm_to_use
     freeze
   end

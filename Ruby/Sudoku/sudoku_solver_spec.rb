@@ -2,8 +2,8 @@ require 'sudoku_solver'
 
 describe SudokuSolver do
   it "should return time stats" do
-    solver = SudokuSolver.new()
     puzzle = SudokuPuzzle.empty(1)
+    solver = SudokuSolver.new(puzzle)
     results = solver.solve(puzzle)
     results['start_time'].should < Time.now
     results['end_time'].should > results['start_time']
@@ -11,22 +11,22 @@ describe SudokuSolver do
   end
 
   it "should return a solved puzzle unchanged" do
-    solver = SudokuSolver.new()
     puzzle = SudokuPuzzle.new([[1]])
+    solver = SudokuSolver.new(puzzle)
     results = solver.solve(puzzle)
     results['puzzle'].object_id.should == puzzle.object_id
   end
 
   it "should solve a 1x1 puzzle" do
-    solver = SudokuSolver.new()
     puzzle = SudokuPuzzle.new([[0]])
+    solver = SudokuSolver.new(puzzle)
     results = solver.solve(puzzle)
     results['puzzle'].should == SudokuPuzzle.new([[1]])
   end
 
   it "should solve a 4x4 puzzle" do
-    solver = SudokuSolver.new()
     puzzle = SudokuPuzzle.empty(4)
+    solver = SudokuSolver.new(puzzle)
     results = solver.solve(puzzle)
     solved_puzzle = results['puzzle']
     rows = [[1,2,3,4],
