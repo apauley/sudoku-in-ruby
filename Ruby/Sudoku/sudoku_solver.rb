@@ -13,6 +13,14 @@ class SudokuSolver
     freeze
   end
 
+  def to_s
+    "Start time:\t#{start_time}\n" +
+    "End time:\t#{end_time}\n" +
+    "Elapsed time:\t#{elapsed_time}\n" +
+    "Algorithm:\t#{@algorithm}\n" +
+    "\nCrunched #{crunched_puzzle}\n"
+  end
+
   def crunched_puzzle
     @crunched_puzzle
   end

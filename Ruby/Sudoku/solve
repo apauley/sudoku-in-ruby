@@ -60,9 +60,8 @@ rows = [[0,a,0, f,k,0, 0,0,0],
 puzzle = SudokuPuzzle.empty(4)
 #puzzle = SudokuPuzzle.new(rows)
 
-solver = SudokuSolver.new
-spuzzle = solver.solve(puzzle)
-puts spuzzle
+solver = SudokuSolver.new(puzzle)
+puts solver
 
 dict = {0=>0,
   1=>'A', 2=>'E', 3=>'F',
