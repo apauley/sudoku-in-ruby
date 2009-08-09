@@ -6,7 +6,7 @@ describe SudokuSolver do
     solver = SudokuSolver.new(puzzle)
     results = solver.solve
     solver.start_time.should < Time.now
-    results['end_time'].should > results['start_time']
+    solver.end_time.should > solver.start_time
     results['elapsed_time'].should == results['end_time'] - results['start_time']
   end
 
