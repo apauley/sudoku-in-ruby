@@ -23,6 +23,10 @@ class SudokuSolver
   end
 
   def elapsed_time
-    @end_time - @start_time
+    @end_time - start_time
+  end
+
+  def start_time
+    @start_time
   end
 end
