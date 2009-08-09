@@ -6,15 +6,15 @@ class SudokuSolver
   end
 
   def initialize(puzzle, algorithm_to_use="trial_and_error")
-    @algorithm = self.class.algorithms[algorithm_to_use]
     @start_time = Time.now
+    @algorithm = self.class.algorithms[algorithm_to_use].new(puzzle)
     freeze
   end
 
   def solve(puzzle)
     results = {}
-    results['start_time'] = Time.now
-    results['puzzle'] = @algorithm.new(puzzle).solve
+    results['start_time'] = @start_time
+    results['puzzle'] = @algorithm.solve
     results['end_time'] = Time.now
     results['elapsed_time'] = results['end_time'] - results['start_time']
     return results
