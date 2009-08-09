@@ -57,11 +57,16 @@ rows = [[0,a,0, f,k,0, 0,0,0],
         [k,0,r, 0,0,0, 0,0,f],
        ]
 
-puzzle = SudokuPuzzle.empty(4)
-#puzzle = SudokuPuzzle.new(rows)
+rows = [[0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0],
+        [0,0,0,0]]
+
+#puzzle = SudokuPuzzle.empty(4)
+puzzle = SudokuPuzzle.new(rows)
 
 solver = SudokuSolver.new(puzzle)
-puts solver
+$stderr << solver
 
 dict = {0=>0,
   1=>'A', 2=>'E', 3=>'F',

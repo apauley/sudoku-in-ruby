@@ -2,20 +2,30 @@ require 'matrix'
 require 'sudoku_exceptions'
 
 class SudokuPuzzle
-  def SudokuPuzzle.columns(grid_columns)
+  def SudokuPuzzle.columns(grid_columns, try_count=0, err_count=0)
     matrix = Matrix.columns(grid_columns)
-    return SudokuPuzzle.new(matrix.to_a)
+    return SudokuPuzzle.new(matrix.to_a, try_count, err_count)
   end
 
-  def SudokuPuzzle.empty(puzzle_size)
+  def SudokuPuzzle.empty(puzzle_size, try_count=0, err_count=0)
     matrix = Matrix.zero(puzzle_size)
-    return SudokuPuzzle.new(matrix.to_a)
+    return SudokuPuzzle.new(matrix.to_a, try_count, err_count)
   end
 
-  def initialize(grid_rows)
+  def initialize(grid_rows, try_count=0, err_count=0)
     @grid = Matrix[*grid_rows]
+    @try_count = try_count
+    @err_count = err_count
     freeze
     validate
+  end
+
+  def try_count
+    @try_count
+  end
+
+  def err_count
+    @err_count
   end
 
   def to_s
