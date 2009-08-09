@@ -13,7 +13,7 @@ class SudokuSolver
     freeze
   end
 
-  def solve(puzzle)
+  def solve
     results = {}
     results['start_time'] = @start_time
     results['puzzle'] = @crunched_puzzle
