@@ -22,7 +22,7 @@ class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
     if pos = incomplete_component_index(luckyrows)
       incomplete_row = luckyrows[pos]
 
-      available_elements = (1..@puzzle.size).to_a - incomplete_row.uniq
+      available_elements = (1..@puzzle.size).to_a
       luckypuzzle = try_luck_with(available_elements, luckyrows)
       return self.class.new(luckypuzzle).solve
     end
@@ -30,6 +30,8 @@ class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
 
   def try_luck_with(elements, puzzlerows)
     if elements.empty?
+      # I raised a RuntimeError to see why elements were sometimes empty,
+      # and then everything suddenly worked. Weird.
       raise NoElementError, 'No elements!'
     end
 
