@@ -4,6 +4,10 @@ class SudokuAlgorithm
     freeze
   end
 
+  def to_s
+    self.class.name
+  end
+
   def solve
     raise NotImplementedError, 'Please implement this method in a subclass'
   end
