@@ -7,6 +7,7 @@ class SudokuSolver
 
   def initialize(puzzle, algorithm_to_use="trial_and_error")
     @algorithm = self.class.algorithms[algorithm_to_use]
+    @start_time = Time.now
     freeze
   end
 
