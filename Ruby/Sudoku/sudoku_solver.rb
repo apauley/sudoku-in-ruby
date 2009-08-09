@@ -13,13 +13,8 @@ class SudokuSolver
     freeze
   end
 
-  def solve
-    results = {}
-    results['start_time'] = @start_time
-    results['puzzle'] = @crunched_puzzle
-    results['end_time'] = @end_time
-    results['elapsed_time'] = elapsed_time
-    return results
+  def crunched_puzzle
+    @crunched_puzzle
   end
 
   def elapsed_time
