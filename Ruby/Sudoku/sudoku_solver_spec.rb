@@ -9,6 +9,19 @@ describe SudokuSolver do
     solver.elapsed_time.should == solver.end_time - solver.start_time
   end
 
+  it "should have a computed puzzle" do
+    puzzle = SudokuPuzzle.empty(1)
+    solver = SudokuSolver.new(puzzle)
+    solver.crunched_puzzle.should == SudokuPuzzle.new([[1]])
+  end
+
+  it "should count attempts and errors" do
+    puzzle = SudokuPuzzle.empty(1)
+    solver = SudokuSolver.new(puzzle)
+    solver.valid_attempts.should == 0
+    solver.error_attempts.should == 0
+  end
+
   it "should have an informative string representation" do
     puzzle = SudokuPuzzle.empty(1)
     solver = SudokuSolver.new(puzzle)
