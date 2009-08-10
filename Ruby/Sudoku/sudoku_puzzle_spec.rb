@@ -168,14 +168,4 @@ describe SudokuPuzzle do
     puzzle = SudokuPuzzle.empty(9)
     puzzle.component_total.should == 45
   end
-
-  it "should keep count of tries and errors" do
-    puzzle = SudokuPuzzle.empty(1)
-    puzzle.try_count.should == 0
-    puzzle.err_count.should == 0
-    puzzle = SudokuPuzzle.empty(1, try_count=42, err_count=123)
-    puzzle.try_count.should == 42
-    puzzle.err_count.should == 123
-  end
-
 end
