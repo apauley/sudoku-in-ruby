@@ -19,14 +19,6 @@ class SudokuPuzzle
     freeze
   end
 
-  def try_count
-    @try_count
-  end
-
-  def err_count
-    @err_count
-  end
-
   def to_s
     grid_s = (rows.collect {|row| row.to_s + "\n"}).to_s + "\n"
     preamble = size.to_s + "x" + size.to_s + " puzzle:\n"
