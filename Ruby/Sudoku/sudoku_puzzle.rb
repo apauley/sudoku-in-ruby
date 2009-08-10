@@ -14,7 +14,6 @@ class SudokuPuzzle
 
   def initialize(grid_rows)
     @grid = Matrix[*grid_rows]
-    #puts self
     validate
     freeze
   end
