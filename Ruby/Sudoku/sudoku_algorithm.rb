@@ -8,6 +8,10 @@ class SudokuAlgorithm
     self.class.name
   end
 
+  def puzzle
+    @puzzle
+  end
+
   def solve
     raise NotImplementedError, 'Please implement this method in a subclass'
   end
@@ -16,14 +20,14 @@ end
 class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
   def solve
     if @puzzle.solved?
-      return @puzzle
+      return self
     end
     luckyrows = @puzzle.rows.clone
     if pos = incomplete_component_index(luckyrows)
       incomplete_row = luckyrows[pos]
 
       available_elements = (1..@puzzle.size).to_a
-      luckypuzzle = try_luck_with(available_elements, luckyrows)
+      luckypuzzle = try_luck_with(available_elements, luckyrows).puzzle
       return self.class.new(luckypuzzle).solve
     end
   end
@@ -44,7 +48,7 @@ class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
 
         luckypuzzle = SudokuPuzzle.new(luckyrows.clone)
         return self.class.new(luckypuzzle).solve
-      rescue RuntimeError => detail
+      rescue SudokuError => detail
         elements.delete_at(0)
         return try_luck_with(elements, puzzlerows)
       end

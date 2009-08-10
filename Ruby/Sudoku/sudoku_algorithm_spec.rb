@@ -47,7 +47,7 @@ describe RecursiveTrialAndErrorAlgorithm do
             [4,3,2,0]]
     puzzle = SudokuPuzzle.new(rows)
     algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
-    newpuzzle = algorithm.try_luck_with([1,2,3,4], puzzle.rows)
+    newpuzzle = algorithm.try_luck_with([1,2,3,4], puzzle.rows).puzzle
     rows = [[1,2,3,4],
             [3,4,1,2],
             [2,1,4,3],
@@ -58,19 +58,21 @@ describe RecursiveTrialAndErrorAlgorithm do
   it "should return a solved puzzle unchanged" do
     puzzle = SudokuPuzzle.new([[1]])
     algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
-    algorithm.solve.object_id.should == puzzle.object_id
+    solved_puzzle = algorithm.solve.puzzle
+    solved_puzzle.object_id.should == puzzle.object_id
   end
 
   it "should solve a 1x1 puzzle" do
     puzzle = SudokuPuzzle.new([[0]])
     algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
-    algorithm.solve.should == SudokuPuzzle.new([[1]])
+    solved_puzzle = algorithm.solve.puzzle
+    solved_puzzle.should == SudokuPuzzle.new([[1]])
   end
 
   it "should solve a 4x4 puzzle" do
     puzzle = SudokuPuzzle.empty(4)
     algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
-    solved_puzzle = algorithm.solve
+    solved_puzzle = algorithm.solve.puzzle
     rows = [[1,2,3,4],
             [3,4,1,2],
             [2,1,4,3],
