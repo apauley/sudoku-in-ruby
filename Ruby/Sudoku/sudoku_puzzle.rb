@@ -46,8 +46,7 @@ class SudokuPuzzle
   def validate_entries
     grid.to_a.flatten.each {|x|
       if x > size
-        #FIXME: Ruby string interpolation?
-        msg = "Invalid entry " + x.to_s + " for puzzle with size " + size.to_s
+        msg = "Invalid entry #{x} for puzzle with size #{size}"
         raise TooLargeCellValueError, msg
       end
     }
@@ -58,7 +57,7 @@ class SudokuPuzzle
       list = x.flatten
       list.delete(0)
       if list.uniq != list
-        msg = 'Duplicates in component ' + an_array.to_s + ' for ' + self.to_s
+        msg = "Duplicates in component #{an_array} for #{self}"
         raise DuplicateComponentValueError, msg
       end}
   end
