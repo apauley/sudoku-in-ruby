@@ -34,6 +34,7 @@ describe SudokuSolver do
     solver.to_s.include?("Valid attempts:\t#{solver.valid_attempts}").should == true
     solver.to_s.include?("Error attempts:\t#{solver.error_attempts}").should == true
     solver.to_s.include?("Total attempts:\t#{solver.total_attempts}").should == true
+    solver.to_s.include?("Input #{solver.input_puzzle}").should == true
     solver.to_s.include?("Crunched #{solver.crunched_puzzle}").should == true
   end
 end
