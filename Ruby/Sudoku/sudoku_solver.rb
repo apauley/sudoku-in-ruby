@@ -45,26 +45,18 @@ class SudokuSolver
     @error_attempts = 0
 
     @start_time = Time.now
-    @algorithm = self.class.algorithms[algorithm_to_use].new(@input_puzzle, solver=self)
+    @algorithm = self.class.algorithms[algorithm_to_use].new(@input_puzzle)
     @crunched_puzzle = @algorithm.solve.puzzle
     @end_time = Time.now
     freeze
   end
 
-  def valid_attempt!
-    @valid_attempts = @valid_attempts + 1
-  end
-
-  def error_attempt!
-    @error_attempts = @error_attempts + 1
-  end
-
   def valid_attempts
-    @valid_attempts
+    @stats_keeper.valid_attempts
   end
 
   def error_attempts
-    @error_attempts
+    @stats_keeper.error_attempts
   end
 
   def total_attempts

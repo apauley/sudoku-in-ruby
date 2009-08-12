@@ -21,7 +21,7 @@ describe SudokuSolver do
             [4,3,2,1]]
 
     solver = SudokuSolver.new(rows)
-    solver.valid_attempts.should == 1
+    solver.valid_attempts.should == 2
     solver.error_attempts.should == 3
   end
 
