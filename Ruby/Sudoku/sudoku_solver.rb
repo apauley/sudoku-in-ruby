@@ -69,9 +69,7 @@ class SudokuSolver
     "Valid attempts:\t#{@stats_keeper.valid_attempts}\n" +
     "Error attempts:\t#{@stats_keeper.error_attempts}\n" +
     "Total attempts:\t#{@stats_keeper.total_attempts}\n" +
-    "\nCrunched #{crunched_puzzle}\n" +
-      "Stats valid:\t#{@stats_keeper.valid_attempts}\n" +
-      "Stats error:\t#{@stats_keeper.error_attempts}\n"
+    "\nCrunched #{crunched_puzzle}\n"
   end
 
   def crunched_puzzle

@@ -1,24 +1,7 @@
-class FakeSolver
-  def valid_attempt!
-  end
-
-  def error_attempt!
-  end
-end
-
 class SudokuAlgorithm
-  def initialize(puzzle, solver=FakeSolver.new)
+  def initialize(puzzle)
     @puzzle = puzzle
-    @solver = solver
     freeze
-  end
-
-  def valid_attempt!
-    @solver.valid_attempt!
-  end
-
-  def error_attempt!
-    @solver.error_attempt!
   end
 
   def to_s
@@ -45,7 +28,7 @@ class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
 
       available_elements = (1..@puzzle.size).to_a
       luckypuzzle = try_luck_with(available_elements, luckyrows).puzzle
-      return self.class.new(luckypuzzle, @solver).solve
+      return self.class.new(luckypuzzle).solve
     end
   end
 
@@ -64,10 +47,8 @@ class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
         luckyrows[pos] = luckyrow.clone
 
         luckypuzzle = SudokuPuzzle.new(luckyrows.clone, stats_keeper=@puzzle.stats_keeper)
-        valid_attempt!
-        return self.class.new(luckypuzzle, @solver).solve
+        return self.class.new(luckypuzzle).solve
       rescue SudokuError => detail
-        error_attempt!
         elements.delete_at(0)
         return try_luck_with(elements, puzzlerows)
       end
