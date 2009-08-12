@@ -4,12 +4,12 @@ require 'sudoku_exceptions'
 class SudokuPuzzle
   def SudokuPuzzle.columns(grid_columns)
     matrix = Matrix.columns(grid_columns)
-    return SudokuPuzzle.new(matrix.to_a)
+    return self.new(matrix.to_a)
   end
 
   def SudokuPuzzle.empty(puzzle_size)
     matrix = Matrix.zero(puzzle_size)
-    return SudokuPuzzle.new(matrix.to_a)
+    return self.new(matrix.to_a)
   end
 
   def initialize(grid_rows)

@@ -1,8 +1,13 @@
 require 'sudoku_algorithm'
+require 'sudoku_puzzle'
 
 class SudokuSolver
   def SudokuSolver.algorithms
     {"trial_and_error" => RecursiveTrialAndErrorAlgorithm}
+  end
+
+  def SudokuSolver.newWithEmptyPuzzle(size)
+    return self.new(SudokuPuzzle.empty(size))
   end
 
   def initialize(puzzle, algorithm_to_use="trial_and_error")
