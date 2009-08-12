@@ -1,3 +1,5 @@
+require 'sudoku_puzzle'
+
 class SudokuAlgorithm
   def initialize(puzzle)
     @puzzle = puzzle
