@@ -41,8 +41,6 @@ class SudokuSolver
   def initialize(puzzleRows, algorithm_to_use="trial_and_error")
     @stats_keeper = SolverStatsKeeper.new
     @input_puzzle = SudokuPuzzle.new(puzzleRows, stats_keeper=@stats_keeper)
-    @valid_attempts = 0
-    @error_attempts = 0
 
     @start_time = Time.now
     @algorithm = self.class.algorithms[algorithm_to_use].new(@input_puzzle)
@@ -60,7 +58,7 @@ class SudokuSolver
   end
 
   def total_attempts
-    @valid_attempts + @error_attempts
+    @stats_keeper.total_attempts
   end
 
   def to_s
@@ -68,9 +66,9 @@ class SudokuSolver
     "End time:\t#{end_time}\n" +
     "Elapsed time:\t#{elapsed_time}\n" +
     "Algorithm:\t#{@algorithm}\n" +
-    "Valid attempts:\t#{valid_attempts}\n" +
-    "Error attempts:\t#{error_attempts}\n" +
-    "Total attempts:\t#{total_attempts}\n" +
+    "Valid attempts:\t#{@stats_keeper.valid_attempts}\n" +
+    "Error attempts:\t#{@stats_keeper.error_attempts}\n" +
+    "Total attempts:\t#{@stats_keeper.total_attempts}\n" +
     "\nCrunched #{crunched_puzzle}\n" +
       "Stats valid:\t#{@stats_keeper.valid_attempts}\n" +
       "Stats error:\t#{@stats_keeper.error_attempts}\n"
