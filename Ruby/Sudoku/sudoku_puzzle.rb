@@ -1,6 +1,14 @@
 require 'matrix'
 require 'sudoku_exceptions'
 
+class FakeStatsKeeper
+  def valid_attempt!
+  end
+
+  def error_attempt!
+  end
+end
+
 class SudokuPuzzle
   def SudokuPuzzle.columns(grid_columns)
     matrix = Matrix.columns(grid_columns)
@@ -12,10 +20,23 @@ class SudokuPuzzle
     return self.new(matrix.to_a)
   end
 
-  def initialize(grid_rows)
+  def initialize(grid_rows, stats_keeper=FakeStatsKeeper.new)
     @grid = Matrix[*grid_rows]
-    validate
+    @stats_keeper = stats_keeper
+
+    begin
+      validate
+      @stats_keeper.valid_attempt!
+    rescue SudokuError
+      @stats_keeper.error_attempt!
+      raise
+    end
+
     freeze
+  end
+
+  def stats_keeper
+    @stats_keeper
   end
 
   def to_s

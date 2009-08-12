@@ -1,4 +1,5 @@
 require 'sudoku_solver'
+require 'sudoku_puzzle'
 
 describe SudokuSolver do
   it "should return time stats" do
@@ -19,7 +20,6 @@ describe SudokuSolver do
             [2,1,4,3],
             [4,3,2,1]]
 
-    puzzle = SudokuPuzzle.new(rows)
     solver = SudokuSolver.new(rows)
     solver.valid_attempts.should == 1
     solver.error_attempts.should == 3

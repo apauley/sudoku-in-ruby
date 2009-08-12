@@ -1,6 +1,33 @@
 require 'sudoku_algorithm'
 require 'sudoku_puzzle'
 
+class SolverStatsKeeper
+  def initialize
+    @valid_attempts = 0
+    @error_attempts = 0
+  end
+
+  def valid_attempt!
+    @valid_attempts = @valid_attempts + 1
+  end
+
+  def error_attempt!
+    @error_attempts = @error_attempts + 1
+  end
+
+  def valid_attempts
+    @valid_attempts
+  end
+
+  def error_attempts
+    @error_attempts
+  end
+
+  def total_attempts
+    @valid_attempts + @error_attempts
+  end
+end
+
 class SudokuSolver
   def SudokuSolver.algorithms
     {"trial_and_error" => RecursiveTrialAndErrorAlgorithm}
@@ -12,12 +39,13 @@ class SudokuSolver
   end
 
   def initialize(puzzleRows, algorithm_to_use="trial_and_error")
-    @puzzle = SudokuPuzzle.new(puzzleRows)
+    @stats_keeper = SolverStatsKeeper.new
+    @input_puzzle = SudokuPuzzle.new(puzzleRows, stats_keeper=@stats_keeper)
     @valid_attempts = 0
     @error_attempts = 0
 
     @start_time = Time.now
-    @algorithm = self.class.algorithms[algorithm_to_use].new(@puzzle, solver=self)
+    @algorithm = self.class.algorithms[algorithm_to_use].new(@input_puzzle, solver=self)
     @crunched_puzzle = @algorithm.solve.puzzle
     @end_time = Time.now
     freeze
@@ -51,7 +79,9 @@ class SudokuSolver
     "Valid attempts:\t#{valid_attempts}\n" +
     "Error attempts:\t#{error_attempts}\n" +
     "Total attempts:\t#{total_attempts}\n" +
-    "\nCrunched #{crunched_puzzle}\n"
+    "\nCrunched #{crunched_puzzle}\n" +
+      "Stats valid:\t#{@stats_keeper.valid_attempts}\n" +
+      "Stats error:\t#{@stats_keeper.error_attempts}\n"
   end
 
   def crunched_puzzle

@@ -63,7 +63,7 @@ class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
         luckyrow = improve_component(incomplete_row, elements.first).clone
         luckyrows[pos] = luckyrow.clone
 
-        luckypuzzle = SudokuPuzzle.new(luckyrows.clone)
+        luckypuzzle = SudokuPuzzle.new(luckyrows.clone, stats_keeper=@puzzle.stats_keeper)
         valid_attempt!
         return self.class.new(luckypuzzle, @solver).solve
       rescue SudokuError => detail
