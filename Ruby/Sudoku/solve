@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-require 'sudoku_puzzle'
 require 'sudoku_solver'
 
 rows1m = [[0,0,0, 0,0,9, 5,1,0],
@@ -62,9 +61,7 @@ rows4 = [[0,0,0,0],
          [0,0,0,0],
          [0,0,0,0]]
 
-puzzle = SudokuPuzzle.new(rows1h)
-
-solver = SudokuSolver.new(puzzle)
+solver = SudokuSolver.new(rows4)
 $stderr << solver
 
 dict = {0=>0,

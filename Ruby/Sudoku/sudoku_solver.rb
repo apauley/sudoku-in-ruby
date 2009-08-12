@@ -7,15 +7,17 @@ class SudokuSolver
   end
 
   def SudokuSolver.newWithEmptyPuzzle(size)
-    return self.new(SudokuPuzzle.empty(size))
+    puzzle = SudokuPuzzle.empty(size)
+    return self.new(puzzle.rows)
   end
 
-  def initialize(puzzle, algorithm_to_use="trial_and_error")
+  def initialize(puzzleRows, algorithm_to_use="trial_and_error")
+    @puzzle = SudokuPuzzle.new(puzzleRows)
     @valid_attempts = 0
     @error_attempts = 0
 
     @start_time = Time.now
-    @algorithm = self.class.algorithms[algorithm_to_use].new(puzzle, solver=self)
+    @algorithm = self.class.algorithms[algorithm_to_use].new(@puzzle, solver=self)
     @crunched_puzzle = @algorithm.solve.puzzle
     @end_time = Time.now
     freeze
