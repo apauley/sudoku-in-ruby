@@ -16,8 +16,8 @@ class SudokuSolver
     @stats_keeper = SolverStatsKeeper.new
     @input_puzzle = SudokuPuzzle.new(puzzleRows, stats_keeper=@stats_keeper)
     @algorithm = self.class.algorithms[algorithm_to_use].new(@input_puzzle)
-    @stats_keeper.end_time!
     @crunched_puzzle = @algorithm.solve.puzzle
+    @stats_keeper.end_time!
     freeze
   end
 

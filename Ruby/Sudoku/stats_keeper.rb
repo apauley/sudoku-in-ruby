@@ -15,6 +15,7 @@ class SolverStatsKeeper
 
   def end_time!
     @end_time = Time.now
+    freeze
   end
 
   def start_time
