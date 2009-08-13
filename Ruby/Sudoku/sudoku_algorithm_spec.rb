@@ -2,12 +2,6 @@ require 'sudoku_puzzle'
 require 'sudoku_algorithm'
 
 describe RecursiveTrialAndErrorAlgorithm do
-  it "should return its name as string representation" do
-    puzzle = SudokuPuzzle.empty(1)
-    algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
-    algorithm.to_s.should == 'RecursiveTrialAndErrorAlgorithm'
-  end
-
   it "should find the first incomplete component index" do
     rows = [[1,2,3,4],
             [3,4,1,2],
@@ -54,9 +48,7 @@ describe RecursiveTrialAndErrorAlgorithm do
   end
 
   it "should solve a 1x1 puzzle" do
-    puzzle = SudokuPuzzle.new([[0]])
-    algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
-    solved_puzzle = algorithm.solve.puzzle
+    solved_puzzle = RecursiveTrialAndErrorAlgorithm.solveRows([[0]])
     solved_puzzle.should == SudokuPuzzle.new([[1]])
   end
 

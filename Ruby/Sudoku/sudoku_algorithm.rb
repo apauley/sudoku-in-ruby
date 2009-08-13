@@ -6,10 +6,6 @@ class SudokuAlgorithm
     freeze
   end
 
-  def to_s
-    self.class.name
-  end
-
   def puzzle
     @puzzle
   end
@@ -20,6 +16,14 @@ class SudokuAlgorithm
 end
 
 class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
+  def RecursiveTrialAndErrorAlgorithm.solve(puzzle)
+    return new(puzzle).solve.puzzle
+  end
+
+  def RecursiveTrialAndErrorAlgorithm.solveRows(puzzleRows)
+    puzzle = SudokuPuzzle.new(puzzleRows)
+    return solve(puzzle)
+  end
 
   def RecursiveTrialAndErrorAlgorithm.improve_component(an_array, element)
     if pos = an_array.index(0)
