@@ -38,12 +38,12 @@ describe RecursiveTrialAndErrorAlgorithm do
             [4,3,2,0]]
     puzzle = SudokuPuzzle.new(rows)
     algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
-    newpuzzle = algorithm.try_luck_with([1,2,3,4], puzzle.rows).puzzle
-    rows = [[1,2,3,4],
-            [3,4,1,2],
-            [2,1,4,3],
-            [4,3,2,1]]
-    newpuzzle.should == SudokuPuzzle.new(rows)
+    newpuzzle = algorithm.try_luck_with([1,2,3,4], rows).puzzle
+    expected_rows = [[1,2,3,4],
+                     [3,4,1,2],
+                     [2,1,4,3],
+                     [4,3,2,1]]
+    newpuzzle.should == SudokuPuzzle.new(expected_rows)
   end
 
   it "should return a solved puzzle unchanged" do
