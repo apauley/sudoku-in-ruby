@@ -16,7 +16,7 @@ describe RecursiveTrialAndErrorAlgorithm do
 
     puzzle = SudokuPuzzle.new(rows)
     algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
-    algorithm.incomplete_component_index(puzzle.rows).should == 3
+    algorithm.incomplete_component_index(rows).should == 3
   end
 
   it "should replace first 0 in a row with an element" do

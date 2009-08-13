@@ -63,7 +63,6 @@ class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
         return index
       end
     }
-    return nil
   end
 
   def improve_component(an_array, element)
