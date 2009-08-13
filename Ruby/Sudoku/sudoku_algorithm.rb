@@ -20,6 +20,14 @@ class SudokuAlgorithm
 end
 
 class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
+
+  def RecursiveTrialAndErrorAlgorithm.improve_component(an_array, element)
+    if pos = an_array.index(0)
+      an_array[pos] = element
+    end
+    return an_array
+  end
+
   def solve
     if @puzzle.solved?
       return self
@@ -45,7 +53,7 @@ class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
     if (pos = incomplete_component_index(luckyrows))
       incomplete_row = luckyrows[pos].clone
       begin
-        luckyrow = improve_component(incomplete_row, elements.first).clone
+        luckyrow = self.class.improve_component(incomplete_row, elements.first).clone
         luckyrows[pos] = luckyrow.clone
 
         luckypuzzle = SudokuPuzzle.new(luckyrows.clone, stats_keeper=@puzzle.stats_keeper)
@@ -63,12 +71,5 @@ class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
         return index
       end
     }
-  end
-
-  def improve_component(an_array, element)
-    if pos = an_array.index(0)
-      an_array[pos] = element
-    end
-    return an_array
   end
 end

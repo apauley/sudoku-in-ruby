@@ -20,23 +20,14 @@ describe RecursiveTrialAndErrorAlgorithm do
   end
 
   it "should replace first 0 in a row with an element" do
-    rows = [[1,2,3,4],
-            [3,0,1,2],
-            [2,1,4,3],
-            [4,3,2,0]]
-
-    puzzle = SudokuPuzzle.new(rows)
-    algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
-    newrow = algorithm.improve_component(puzzle.rows[1], 2)
+    newrow = RecursiveTrialAndErrorAlgorithm.improve_component([3,0,1,2], 2)
     newrow.should == [3,2,1, 2]
-    newrow = algorithm.improve_component(puzzle.rows[1], 3)
-    newrow.should == [3, 3, 1, 2]
+    newrow = RecursiveTrialAndErrorAlgorithm.improve_component([4,3,2,0], 3)
+    newrow.should == [4,3,2,3]
   end
 
   it "should return the row unchanged when it has nothing to do" do
-    puzzle = SudokuPuzzle.new([[1]])
-    algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
-    newrow = algorithm.improve_component(puzzle.rows[0], 500)
+    newrow = RecursiveTrialAndErrorAlgorithm.improve_component([1], 500)
     newrow.should == [1]
   end
 
