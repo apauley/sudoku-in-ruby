@@ -46,4 +46,12 @@ describe SudokuSolver do
       solver.algorithm.should == SudokuAlgorithm.algorithms[x]
     }
   end
+
+  it "should work in parallel" do
+    long_solver = SudokuSolver.newWithEmptyPuzzle(4, algorithm_to_use='trial_and_error')
+    quick_solver = SudokuSolver.newWithEmptyPuzzle(1, algorithm_to_use='do_nothing')
+
+    quick_solver.stats_keeper.elapsed_time.should < long_solver.stats_keeper.elapsed_time
+    #quick_solver.stats_keeper.end_time.should < long_solver.stats_keeper.end_time
+  end
 end
