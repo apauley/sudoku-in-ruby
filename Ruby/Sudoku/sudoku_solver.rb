@@ -25,28 +25,8 @@ class SudokuSolver
     @algorithm
   end
 
-  def start_time
-    @stats_keeper.start_time
-  end
-
-  def end_time
-    @stats_keeper.end_time
-  end
-
-  def elapsed_time
-    @stats_keeper.elapsed_time
-  end
-
-  def valid_attempts
-    @stats_keeper.valid_attempts
-  end
-
-  def error_attempts
-    @stats_keeper.error_attempts
-  end
-
-  def total_attempts
-    @stats_keeper.total_attempts
+  def stats_keeper
+    @stats_keeper
   end
 
   def to_s
