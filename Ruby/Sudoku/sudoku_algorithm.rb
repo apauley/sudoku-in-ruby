@@ -57,10 +57,10 @@ class TrialAndErrorAlgorithm < SudokuAlgorithm
     if (pos = incomplete_component_index(luckyrows))
       incomplete_row = luckyrows[pos].clone
       begin
-        luckyrow = self.class.improve_component(incomplete_row, elements.first).clone
-        luckyrows[pos] = luckyrow.clone
+        luckyrow = self.class.improve_component(incomplete_row, elements.first)
+        luckyrows[pos] = luckyrow
 
-        luckypuzzle = SudokuPuzzle.new(luckyrows.clone, stats_keeper=@puzzle.stats_keeper)
+        luckypuzzle = @puzzle.cloneWithRows(luckyrows)
         return self.class.new(luckypuzzle).solve
       rescue SudokuError => detail
         elements.delete_at(0)

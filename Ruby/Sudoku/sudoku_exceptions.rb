@@ -1,10 +1,13 @@
 class SudokuError < RuntimeError
 end
 
-class NonSquareGridError < SudokuError
+class SudokuSizeError < SudokuError
 end
 
-class NonSquarePuzzleError < SudokuError
+class NonSquareGridError < SudokuSizeError
+end
+
+class NonSquarePuzzleError < SudokuSizeError
 end
 
 class TooLargeCellValueError < SudokuError
@@ -14,4 +17,7 @@ class DuplicateComponentValueError < SudokuError
 end
 
 class NoElementError < SudokuError
+end
+
+class InvalidCloneSizeError < SudokuSizeError
 end
