@@ -37,4 +37,11 @@ describe SudokuSolver do
     solver.to_s.include?("Input #{solver.input_puzzle}").should == true
     solver.to_s.include?("Crunched #{solver.crunched_puzzle}").should == true
   end
+
+  it "should work with all available algorithms" do
+    SudokuSolver.algorithms.keys.each{|x|
+      solver = SudokuSolver.newWithEmptyPuzzle(1, algorithm_to_use=x)
+      solver.algorithm.should == SudokuSolver.algorithms[x]
+    }
+  end
 end
