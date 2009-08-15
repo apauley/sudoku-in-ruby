@@ -15,17 +15,17 @@ class SudokuAlgorithm
   end
 end
 
-class RecursiveTrialAndErrorAlgorithm < SudokuAlgorithm
-  def RecursiveTrialAndErrorAlgorithm.solve(puzzle)
+class TrialAndErrorAlgorithm < SudokuAlgorithm
+  def TrialAndErrorAlgorithm.solve(puzzle)
     return new(puzzle).solve.puzzle
   end
 
-  def RecursiveTrialAndErrorAlgorithm.solveRows(puzzleRows)
+  def TrialAndErrorAlgorithm.solveRows(puzzleRows)
     puzzle = SudokuPuzzle.new(puzzleRows)
     return solve(puzzle)
   end
 
-  def RecursiveTrialAndErrorAlgorithm.improve_component(an_array, element)
+  def TrialAndErrorAlgorithm.improve_component(an_array, element)
     if pos = an_array.index(0)
       an_array[pos] = element
     end

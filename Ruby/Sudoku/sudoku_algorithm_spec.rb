@@ -1,7 +1,7 @@
 require 'sudoku_puzzle'
 require 'sudoku_algorithm'
 
-describe RecursiveTrialAndErrorAlgorithm do
+describe TrialAndErrorAlgorithm do
   it "should find the first incomplete component index" do
     rows = [[1,2,3,4],
             [3,4,1,2],
@@ -9,19 +9,19 @@ describe RecursiveTrialAndErrorAlgorithm do
             [4,3,2,0]]
 
     puzzle = SudokuPuzzle.new(rows)
-    algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
+    algorithm = TrialAndErrorAlgorithm.new(puzzle)
     algorithm.incomplete_component_index(rows).should == 3
   end
 
   it "should replace first 0 in a row with an element" do
-    newrow = RecursiveTrialAndErrorAlgorithm.improve_component([3,0,1,2], 2)
+    newrow = TrialAndErrorAlgorithm.improve_component([3,0,1,2], 2)
     newrow.should == [3,2,1, 2]
-    newrow = RecursiveTrialAndErrorAlgorithm.improve_component([4,3,2,0], 3)
+    newrow = TrialAndErrorAlgorithm.improve_component([4,3,2,0], 3)
     newrow.should == [4,3,2,3]
   end
 
   it "should return the row unchanged when it has nothing to do" do
-    newrow = RecursiveTrialAndErrorAlgorithm.improve_component([1], 500)
+    newrow = TrialAndErrorAlgorithm.improve_component([1], 500)
     newrow.should == [1]
   end
 
@@ -31,7 +31,7 @@ describe RecursiveTrialAndErrorAlgorithm do
             [0,0,0,0],
             [4,3,2,0]]
     puzzle = SudokuPuzzle.new(rows)
-    algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
+    algorithm = TrialAndErrorAlgorithm.new(puzzle)
     newpuzzle = algorithm.try_luck_with([1,2,3,4], rows).puzzle
     expected_rows = [[1,2,3,4],
                      [3,4,1,2],
@@ -42,19 +42,19 @@ describe RecursiveTrialAndErrorAlgorithm do
 
   it "should return a solved puzzle unchanged" do
     puzzle = SudokuPuzzle.new([[1]])
-    algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
+    algorithm = TrialAndErrorAlgorithm.new(puzzle)
     solved_puzzle = algorithm.solve.puzzle
     solved_puzzle.object_id.should == puzzle.object_id
   end
 
   it "should solve a 1x1 puzzle" do
-    solved_puzzle = RecursiveTrialAndErrorAlgorithm.solveRows([[0]])
+    solved_puzzle = TrialAndErrorAlgorithm.solveRows([[0]])
     solved_puzzle.should == SudokuPuzzle.new([[1]])
   end
 
   it "should solve a 4x4 puzzle" do
     puzzle = SudokuPuzzle.empty(4)
-    algorithm = RecursiveTrialAndErrorAlgorithm.new(puzzle)
+    algorithm = TrialAndErrorAlgorithm.new(puzzle)
     solved_puzzle = algorithm.solve.puzzle
     rows = [[1,2,3,4],
             [3,4,1,2],

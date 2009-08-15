@@ -4,7 +4,7 @@ require 'stats_keeper'
 
 class SudokuSolver
   def SudokuSolver.algorithms
-    {"trial_and_error" => RecursiveTrialAndErrorAlgorithm}
+    {"trial_and_error" => TrialAndErrorAlgorithm}
   end
 
   def SudokuSolver.newWithEmptyPuzzle(size)
