@@ -174,7 +174,6 @@ describe SudokuPuzzle do
     cloned_puzzle = puzzle.cloneWithRows([[1]])
     cloned_puzzle.object_id.should_not == puzzle.object_id
     cloned_puzzle.rows.should == [[1]]
-    cloned_puzzle.stats_keeper.object_id.should == puzzle.stats_keeper.object_id
   end
 
   it "should not allow a clone with a different puzzle size" do

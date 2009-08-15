@@ -39,7 +39,7 @@ class SudokuPuzzle
     return self.class.new(grid_rows, stats_keeper=@stats_keeper)
   end
 
-  def stats_keeper
+  def istats_keeper
     @stats_keeper
   end
 
