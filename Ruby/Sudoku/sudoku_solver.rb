@@ -21,14 +21,6 @@ class SudokuSolver
     freeze
   end
 
-  def algorithm
-    @algorithm
-  end
-
-  def stats_keeper
-    @stats_keeper
-  end
-
   def to_s
     "Start time:\t#{@stats_keeper.start_time}\n" +
     "End time:\t#{@stats_keeper.end_time}\n" +
@@ -39,6 +31,14 @@ class SudokuSolver
     "Total attempts:\t#{@stats_keeper.total_attempts}\n" +
     "\nInput #{input_puzzle}\n" +
     "\nCrunched #{crunched_puzzle}\n"
+  end
+
+  def algorithm
+    @algorithm
+  end
+
+  def stats_keeper
+    @stats_keeper
   end
 
   def input_puzzle
