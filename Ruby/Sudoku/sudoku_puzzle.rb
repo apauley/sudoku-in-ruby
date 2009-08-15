@@ -39,10 +39,6 @@ class SudokuPuzzle
     return self.class.new(grid_rows, stats_keeper=@stats_keeper)
   end
 
-  def istats_keeper
-    @stats_keeper
-  end
-
   def to_s
     grid_s = (rows.collect {|row| row.to_s + "\n"}).to_s + "\n"
     preamble = size.to_s + "x" + size.to_s + " puzzle:\n"

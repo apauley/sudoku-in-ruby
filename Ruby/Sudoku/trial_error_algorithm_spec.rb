@@ -1,5 +1,5 @@
+require 'trial_error_algorithm'
 require 'sudoku_puzzle'
-require 'sudoku_algorithm'
 
 describe TrialAndErrorAlgorithm do
   it "should find the first incomplete component index" do
