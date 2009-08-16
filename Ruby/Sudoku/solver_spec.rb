@@ -1,4 +1,4 @@
-require 'sudoku_solver'
+require 'solver'
 require 'sudoku_puzzle'
 
 describe SudokuSolver do
