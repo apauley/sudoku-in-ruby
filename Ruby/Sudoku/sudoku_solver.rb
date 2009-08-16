@@ -1,4 +1,4 @@
-require 'sudoku_algorithm'
+require 'algorithm'
 require 'trial_error_algorithm'
 require 'sudoku_puzzle'
 require 'stats_keeper'

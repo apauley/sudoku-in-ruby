@@ -1,4 +1,4 @@
-require 'sudoku_algorithm'
+require 'algorithm'
 require 'sudoku_puzzle'
 
 class TrialAndErrorAlgorithm < SudokuAlgorithm
