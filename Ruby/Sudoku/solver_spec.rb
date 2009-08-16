@@ -48,10 +48,14 @@ describe SudokuSolver do
   end
 
   it "should work in parallel" do
-    long_solver = SudokuSolver.newWithEmptyPuzzle(4, algorithm_to_use='trial_and_error')
-    quick_solver = SudokuSolver.newWithEmptyPuzzle(1, algorithm_to_use='do_nothing')
+    long_thread = SudokuSolver.threadWithEmptyPuzzle(4, algorithm_to_use='trial_and_error')
+    quick_thread = SudokuSolver.threadWithEmptyPuzzle(1, algorithm_to_use='do_nothing')
 
+    long_thread.join
+    quick_thread.join
+    long_solver = long_thread['solver']
+    quick_solver = quick_thread['solver']
     quick_solver.stats_keeper.elapsed_time.should < long_solver.stats_keeper.elapsed_time
-    #quick_solver.stats_keeper.end_time.should < long_solver.stats_keeper.end_time
+    quick_solver.stats_keeper.end_time.should < long_solver.stats_keeper.end_time
   end
 end

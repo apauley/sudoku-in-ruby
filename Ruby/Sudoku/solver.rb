@@ -6,7 +6,15 @@ require 'stats_keeper'
 class SudokuSolver
   def SudokuSolver.newWithEmptyPuzzle(size, algorithm_to_use="trial_and_error")
     puzzle = SudokuPuzzle.empty(size)
-    return self.new(puzzle.rows, algorithm_to_use)
+    solver = self.new(puzzle.rows, algorithm_to_use)
+    return solver
+  end
+
+  def SudokuSolver.threadWithEmptyPuzzle(size, algorithm_to_use="trial_and_error")
+    thread = Thread.new {
+      Thread.current['solver'] = newWithEmptyPuzzle(size, algorithm_to_use)
+    }
+    return thread
   end
 
   def initialize(puzzleRows, algorithm_to_use="trial_and_error")
