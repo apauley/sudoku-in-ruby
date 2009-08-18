@@ -10,11 +10,13 @@ class SudokuSolver
     return solver
   end
 
-  def SudokuSolver.threadWithEmptyPuzzle(size, algorithm_to_use="trial_and_error")
-    thread = Thread.new {
-      Thread.current['solver'] = newWithEmptyPuzzle(size, algorithm_to_use)
+  def SudokuSolver.solve(row_collection)
+    threads = row_collection.collect { |rows|
+      Thread.new {
+        Thread.current['solver'] = self.new(rows)
+      }
     }
-    return thread
+    threads.collect {|each| each.join; each['solver']}
   end
 
   def initialize(puzzleRows, algorithm_to_use="trial_and_error")
