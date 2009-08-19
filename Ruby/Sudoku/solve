@@ -50,4 +50,4 @@ solvers = SudokuSolver.solve([rows1s, rows4x4])
 
 # Notice the faster puzzles ended before the slow puzzles,
 # even though the slow puzzles were started first.
-$stderr << solvers
+$stdout << solvers
