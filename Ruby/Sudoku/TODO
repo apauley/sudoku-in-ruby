@@ -1,2 +1,0 @@
-- Clean up the algorithm mess
-- Figure out how 2 solvers can run concurrently. A quick solver started after a slow solver should be finished before the first solver.
