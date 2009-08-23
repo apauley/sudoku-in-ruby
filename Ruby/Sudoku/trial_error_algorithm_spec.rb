@@ -9,8 +9,7 @@ describe TrialAndErrorAlgorithm do
             [4,3,2,0]]
 
     puzzle = SudokuPuzzle.new(rows)
-    algorithm = TrialAndErrorAlgorithm.new(puzzle)
-    algorithm.incomplete_component_index(rows).should == 3
+    TrialAndErrorAlgorithm.incomplete_component_index(rows, puzzle).should == 3
   end
 
   it "should replace first 0 in a row with an element" do
@@ -31,8 +30,7 @@ describe TrialAndErrorAlgorithm do
             [0,0,0,0],
             [4,3,2,0]]
     puzzle = SudokuPuzzle.new(rows)
-    algorithm = TrialAndErrorAlgorithm.new(puzzle)
-    newpuzzle = algorithm.try_luck_with([1,2,3,4], puzzle, puzzle).puzzle
+    newpuzzle = TrialAndErrorAlgorithm.try_luck_with([1,2,3,4], puzzle, puzzle).puzzle
     expected_rows = [[1,2,3,4],
                      [3,4,1,2],
                      [2,1,4,3],
