@@ -9,7 +9,7 @@ class TrialAndErrorAlgorithm < SudokuAlgorithm
     return an_array
   end
 
-  def solve(puzzle=@puzzle)
+  def solve(puzzle)
     if puzzle.solved?
       return puzzle
     end
