@@ -32,7 +32,7 @@ describe TrialAndErrorAlgorithm do
             [4,3,2,0]]
     puzzle = SudokuPuzzle.new(rows)
     algorithm = TrialAndErrorAlgorithm.new(puzzle)
-    newpuzzle = algorithm.try_luck_with([1,2,3,4], puzzle).puzzle
+    newpuzzle = algorithm.try_luck_with([1,2,3,4], puzzle, puzzle).puzzle
     expected_rows = [[1,2,3,4],
                      [3,4,1,2],
                      [2,1,4,3],

@@ -19,12 +19,12 @@ class TrialAndErrorAlgorithm < SudokuAlgorithm
 
       available_elements = (1..@puzzle.size).to_a
       puzzle_to_try = SudokuPuzzle.new(luckyrows)
-      luckypuzzle = try_luck_with(available_elements, puzzle_to_try).puzzle
+      luckypuzzle = try_luck_with(available_elements, puzzle_to_try, @puzzle).puzzle
       return self.class.new(luckypuzzle).solve
     end
   end
 
-  def try_luck_with(elements, puzzle)
+  def try_luck_with(elements, puzzle, initial_puzzle)
     if elements.empty?
       # I raised a RuntimeError to see why elements were sometimes empty,
       # and then everything suddenly worked. Weird.
@@ -38,11 +38,11 @@ class TrialAndErrorAlgorithm < SudokuAlgorithm
         luckyrow = self.class.improve_component(incomplete_row, elements.first)
         luckyrows[pos] = luckyrow
 
-        luckypuzzle = @puzzle.cloneWithRows(luckyrows)
+        luckypuzzle = initial_puzzle.cloneWithRows(luckyrows)
         return self.class.new(luckypuzzle).solve
       rescue SudokuError => detail
         elements.delete_at(0)
-        return try_luck_with(elements, puzzle)
+        return try_luck_with(elements, puzzle, initial_puzzle)
       end
     end
   end
