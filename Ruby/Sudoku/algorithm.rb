@@ -5,7 +5,7 @@ class SudokuAlgorithm
   end
 
   def SudokuAlgorithm.solve(puzzle)
-    return new(puzzle).solve.puzzle
+    return new(puzzle).solve(puzzle)
   end
 
   def SudokuAlgorithm.solveRows(puzzleRows)
@@ -28,7 +28,7 @@ class SudokuAlgorithm
 end
 
 class DoNothingAlgorithm < SudokuAlgorithm
-  def solve
-    return self
+  def solve(puzzle)
+    return puzzle
   end
 end

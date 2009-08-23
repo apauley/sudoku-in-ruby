@@ -30,7 +30,7 @@ describe TrialAndErrorAlgorithm do
             [0,0,0,0],
             [4,3,2,0]]
     puzzle = SudokuPuzzle.new(rows)
-    newpuzzle = TrialAndErrorAlgorithm.try_luck_with([1,2,3,4], puzzle, puzzle).puzzle
+    newpuzzle = TrialAndErrorAlgorithm.try_luck_with([1,2,3,4], puzzle, puzzle)
     expected_rows = [[1,2,3,4],
                      [3,4,1,2],
                      [2,1,4,3],
@@ -40,8 +40,7 @@ describe TrialAndErrorAlgorithm do
 
   it "should return a solved puzzle unchanged" do
     puzzle = SudokuPuzzle.new([[1]])
-    algorithm = TrialAndErrorAlgorithm.new(puzzle)
-    solved_puzzle = algorithm.solve.puzzle
+    solved_puzzle = TrialAndErrorAlgorithm.solve(puzzle)
     solved_puzzle.object_id.should == puzzle.object_id
   end
 
@@ -52,8 +51,8 @@ describe TrialAndErrorAlgorithm do
 
   it "should solve a 4x4 puzzle" do
     puzzle = SudokuPuzzle.empty(4)
-    algorithm = TrialAndErrorAlgorithm.new(puzzle)
-    solved_puzzle = algorithm.solve.puzzle
+#    algorithm = TrialAndErrorAlgorithm.new(puzzle)
+    solved_puzzle = TrialAndErrorAlgorithm.solve(puzzle)
     rows = [[1,2,3,4],
             [3,4,1,2],
             [2,1,4,3],
