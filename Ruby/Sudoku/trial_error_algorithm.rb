@@ -6,15 +6,12 @@ class TrialAndErrorAlgorithm < SudokuAlgorithm
     if puzzle.solved?
       return puzzle
     end
-    luckyrows = puzzle.rows.clone
-    if pos = incomplete_component_index(luckyrows, puzzle)
-      incomplete_row = luckyrows[pos]
 
-      available_elements = (1..puzzle.size).to_a
-      puzzle_to_try = SudokuPuzzle.new(luckyrows)
-      luckypuzzle = try_luck_with(available_elements, puzzle_to_try, puzzle)
-      return solve(luckypuzzle)
-    end
+    luckyrows = puzzle.rows
+    available_elements = (1..puzzle.size).to_a
+    puzzle_to_try = SudokuPuzzle.new(luckyrows)
+    luckypuzzle = try_luck_with(available_elements, puzzle_to_try, puzzle)
+    return solve(luckypuzzle)
   end
 
   def TrialAndErrorAlgorithm.try_luck_with(elements, puzzle, initial_puzzle)
@@ -24,7 +21,7 @@ class TrialAndErrorAlgorithm < SudokuAlgorithm
       raise NoElementError, 'No elements!'
     end
 
-    luckyrows = puzzle.rows.clone
+    luckyrows = puzzle.rows
     if (pos = incomplete_component_index(luckyrows, puzzle))
       incomplete_row = luckyrows[pos].clone
       begin
