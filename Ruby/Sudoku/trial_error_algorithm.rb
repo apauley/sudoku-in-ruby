@@ -24,7 +24,7 @@ class TrialAndErrorAlgorithm < SudokuAlgorithm
     end
   end
 
-  def try_luck_with(elements, puzzle, initial_puzzle)
+  def TrialAndErrorAlgorithm.try_luck_with(elements, puzzle, initial_puzzle)
     if elements.empty?
       # I raised a RuntimeError to see why elements were sometimes empty,
       # and then everything suddenly worked. Weird.
