@@ -2,11 +2,6 @@ require 'matrix'
 require 'sudoku_exceptions'
 require 'stats_keeper'
 
-class NullObject
-  def method_missing(method, *args, &block)
-  end
-end
-
 class SudokuPuzzle
   def SudokuPuzzle.columns(grid_columns)
     matrix = Matrix.columns(grid_columns)
@@ -105,6 +100,10 @@ class SudokuPuzzle
 
   def grid
     @grid
+  end
+
+  def stats_keeper
+    @stats_keeper
   end
 
   def rows
