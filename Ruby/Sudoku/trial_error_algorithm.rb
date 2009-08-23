@@ -9,18 +9,18 @@ class TrialAndErrorAlgorithm < SudokuAlgorithm
     return an_array
   end
 
-  def solve
-    if @puzzle.solved?
+  def solve(puzzle=@puzzle)
+    if puzzle.solved?
       return self
     end
-    luckyrows = @puzzle.rows.clone
-    if pos = self.class.incomplete_component_index(luckyrows, @puzzle)
+    luckyrows = puzzle.rows.clone
+    if pos = self.class.incomplete_component_index(luckyrows, puzzle)
       incomplete_row = luckyrows[pos]
 
-      available_elements = (1..@puzzle.size).to_a
+      available_elements = (1..puzzle.size).to_a
       puzzle_to_try = SudokuPuzzle.new(luckyrows)
-      luckypuzzle = self.class.try_luck_with(available_elements, puzzle_to_try, @puzzle).puzzle
-      return self.class.new(luckypuzzle).solve
+      luckypuzzle = self.class.try_luck_with(available_elements, puzzle_to_try, puzzle).puzzle
+      return self.class.new(luckypuzzle).solve(luckypuzzle)
     end
   end
 
