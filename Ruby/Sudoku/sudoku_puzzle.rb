@@ -32,7 +32,7 @@ class SudokuPuzzle
     freeze
   end
 
-  def cloneWithRows(grid_rows)
+  def clone_with_rows(grid_rows)
     if grid_rows.size != self.size
       raise InvalidCloneSizeError
     end

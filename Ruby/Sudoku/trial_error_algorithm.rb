@@ -26,7 +26,7 @@ class TrialAndErrorAlgorithm < SudokuAlgorithm
         luckyrow = improve_component(incomplete_row, elements.first)
         luckyrows[pos] = luckyrow
 
-        luckypuzzle = puzzle.cloneWithRows(luckyrows)
+        luckypuzzle = puzzle.clone_with_rows(luckyrows)
         return solve(luckypuzzle)
       rescue SudokuError => detail
         elements.delete_at(0)

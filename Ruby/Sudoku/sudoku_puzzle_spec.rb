@@ -171,13 +171,13 @@ describe SudokuPuzzle do
 
   it "should be able to clone itself using new rows" do
     puzzle = SudokuPuzzle.empty(1)
-    cloned_puzzle = puzzle.cloneWithRows([[1]])
+    cloned_puzzle = puzzle.clone_with_rows([[1]])
     cloned_puzzle.object_id.should_not == puzzle.object_id
     cloned_puzzle.rows.should == [[1]]
   end
 
   it "should not allow a clone with a different puzzle size" do
     puzzle = SudokuPuzzle.empty(4)
-    lambda {puzzle.cloneWithRows([[1]])}.should raise_error(InvalidCloneSizeError)
+    lambda {puzzle.clone_with_rows([[1]])}.should raise_error(InvalidCloneSizeError)
   end
 end
