@@ -16,12 +16,12 @@ describe SudokuSolver do
   end
 
   it "should count attempts and errors" do
-    rows = [[1,2,3,0],
-            [3,4,1,2],
-            [2,1,4,3],
-            [4,3,2,1]]
+    puzzle = SudokuPuzzle.new([[1,2,3,0],
+                               [3,4,1,2],
+                               [2,1,4,3],
+                               [4,3,2,1]])
 
-    solver = SudokuSolver.new(rows)
+    solver = SudokuSolver.new(puzzle)
     solver.stats_keeper.valid_attempts.should == 2
     solver.stats_keeper.error_attempts.should == 3
   end

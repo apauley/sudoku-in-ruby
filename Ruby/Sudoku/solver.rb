@@ -6,22 +6,22 @@ require 'stats_keeper'
 class SudokuSolver
   def SudokuSolver.newWithEmptyPuzzle(size, algorithm_to_use="trial_and_error")
     puzzle = SudokuPuzzle.empty(size)
-    solver = self.new(puzzle.rows, algorithm_to_use)
+    solver = self.new(puzzle, algorithm_to_use)
     return solver
   end
 
   def SudokuSolver.solve(puzzle_collection)
     threads = puzzle_collection.collect { |puzzle|
       Thread.new {
-        Thread.current['solver'] = self.new(puzzle.rows)
+        Thread.current['solver'] = self.new(puzzle)
       }
     }
     threads.collect {|each| each.join; each['solver']}
   end
 
-  def initialize(puzzleRows, algorithm_to_use="trial_and_error")
+  def initialize(puzzle, algorithm_to_use="trial_and_error")
     @stats_keeper = SolverStatsKeeper.new
-    @input_puzzle = SudokuPuzzle.new(puzzleRows, stats_keeper=@stats_keeper)
+    @input_puzzle = SudokuPuzzle.new(puzzle.rows, stats_keeper=@stats_keeper)
     @algorithm = SudokuAlgorithm.algorithms[algorithm_to_use]
     @crunched_puzzle = @algorithm.solve(@input_puzzle)
     @stats_keeper.end_time!
