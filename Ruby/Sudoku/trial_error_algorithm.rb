@@ -20,7 +20,7 @@ class TrialAndErrorAlgorithm < SudokuAlgorithm
       available_elements = (1..puzzle.size).to_a
       puzzle_to_try = SudokuPuzzle.new(luckyrows)
       luckypuzzle = self.class.try_luck_with(available_elements, puzzle_to_try, puzzle)
-      return self.class.new(luckypuzzle).solve(luckypuzzle)
+      return self.class.new.solve(luckypuzzle)
     end
   end
 
@@ -39,7 +39,7 @@ class TrialAndErrorAlgorithm < SudokuAlgorithm
         luckyrows[pos] = luckyrow
 
         luckypuzzle = initial_puzzle.cloneWithRows(luckyrows)
-        return new(luckypuzzle).solve(luckypuzzle)
+        return new.solve(luckypuzzle)
       rescue SudokuError => detail
         elements.delete_at(0)
         return try_luck_with(elements, puzzle, initial_puzzle)

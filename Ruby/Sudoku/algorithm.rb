@@ -5,7 +5,7 @@ class SudokuAlgorithm
   end
 
   def SudokuAlgorithm.solve(puzzle)
-    return new(puzzle).solve(puzzle)
+    return new.solve(puzzle)
   end
 
   def SudokuAlgorithm.solveRows(puzzleRows)
@@ -13,8 +13,8 @@ class SudokuAlgorithm
     return solve(puzzle)
   end
 
-  def initialize(puzzle)
-    @puzzle = puzzle
+  def initialize
+    # @puzzle = puzzle
     freeze
   end
 

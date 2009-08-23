@@ -51,7 +51,6 @@ describe TrialAndErrorAlgorithm do
 
   it "should solve a 4x4 puzzle" do
     puzzle = SudokuPuzzle.empty(4)
-#    algorithm = TrialAndErrorAlgorithm.new(puzzle)
     solved_puzzle = TrialAndErrorAlgorithm.solve(puzzle)
     rows = [[1,2,3,4],
             [3,4,1,2],
