@@ -5,30 +5,17 @@ class SudokuAlgorithm
   end
 
   def SudokuAlgorithm.solve(puzzle)
-    return new.solve(puzzle)
+    raise NotImplementedError, 'Please implement this method in a subclass'
   end
 
   def SudokuAlgorithm.solveRows(puzzleRows)
     puzzle = SudokuPuzzle.new(puzzleRows)
     return solve(puzzle)
   end
-
-  def initialize
-    # @puzzle = puzzle
-    freeze
-  end
-
-  def puzzle
-    @puzzle
-  end
-
-  def solve
-    raise NotImplementedError, 'Please implement this method in a subclass'
-  end
 end
 
 class DoNothingAlgorithm < SudokuAlgorithm
-  def solve(puzzle)
+  def DoNothingAlgorithm.solve(puzzle)
     return puzzle
   end
 end
