@@ -48,15 +48,15 @@ describe SudokuSolver do
   end
 
   it "should work in parallel" do
-    slow_rows = [[1,0,0,0],
-                 [0,0,0,0],
-                 [0,0,0,0],
-                 [0,0,0,4]]
+    slow_puzzle = SudokuPuzzle.new([[1,0,0,0],
+                                    [0,0,0,0],
+                                    [0,0,0,0],
+                                    [0,0,0,4]])
 
-    quick_rows = [[1]]
+    quick_puzzle = SudokuPuzzle.new([[1]])
 
     # Add the slow puzzle first
-    slow_solver, quick_solver = SudokuSolver.solve([slow_rows, quick_rows])
+    slow_solver, quick_solver = SudokuSolver.solve([slow_puzzle, quick_puzzle])
 
     slow_stats = slow_solver.stats_keeper
     quick_stats = quick_solver.stats_keeper

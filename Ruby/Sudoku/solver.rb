@@ -10,10 +10,10 @@ class SudokuSolver
     return solver
   end
 
-  def SudokuSolver.solve(row_collection)
-    threads = row_collection.collect { |rows|
+  def SudokuSolver.solve(puzzle_collection)
+    threads = puzzle_collection.collect { |puzzle|
       Thread.new {
-        Thread.current['solver'] = self.new(rows)
+        Thread.current['solver'] = self.new(puzzle.rows)
       }
     }
     threads.collect {|each| each.join; each['solver']}
