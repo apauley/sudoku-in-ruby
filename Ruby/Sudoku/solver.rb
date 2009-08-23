@@ -1,7 +1,6 @@
 require 'algorithm'
 require 'trial_error_algorithm'
 require 'sudoku_puzzle'
-require 'stats_keeper'
 
 class SudokuSolver
   def SudokuSolver.newWithEmptyPuzzle(size, algorithm_to_use="trial_and_error")
@@ -22,7 +21,6 @@ class SudokuSolver
   def initialize(puzzle, algorithm_to_use="trial_and_error")
     @input_puzzle = puzzle
     @stats_keeper = puzzle.stats_keeper
-
     @algorithm = SudokuAlgorithm.algorithms[algorithm_to_use]
     @crunched_puzzle = @algorithm.solve(@input_puzzle)
     @stats_keeper.end_time!
