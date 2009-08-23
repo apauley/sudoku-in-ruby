@@ -1,5 +1,6 @@
 require 'matrix'
 require 'sudoku_exceptions'
+require 'stats_keeper'
 
 class NullObject
   def method_missing(method, *args, &block)
@@ -17,7 +18,7 @@ class SudokuPuzzle
     return self.new(matrix.to_a)
   end
 
-  def initialize(grid_rows, stats_keeper=NullObject.new)
+  def initialize(grid_rows, stats_keeper=StatsKeeper.new)
     @grid = Matrix[*grid_rows]
     @stats_keeper = stats_keeper
 

@@ -20,7 +20,7 @@ class SudokuSolver
   end
 
   def initialize(puzzle, algorithm_to_use="trial_and_error")
-    @stats_keeper = SolverStatsKeeper.new
+    @stats_keeper = StatsKeeper.new
     @input_puzzle = SudokuPuzzle.new(puzzle.rows, stats_keeper=@stats_keeper)
     @algorithm = SudokuAlgorithm.algorithms[algorithm_to_use]
     @crunched_puzzle = @algorithm.solve(@input_puzzle)

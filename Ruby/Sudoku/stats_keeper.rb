@@ -1,4 +1,4 @@
-class SolverStatsKeeper
+class StatsKeeper
   def initialize
     @start_time = Time.now
     @valid_attempts = 0
