@@ -2,13 +2,6 @@ require 'algorithm'
 require 'sudoku_puzzle'
 
 class TrialAndErrorAlgorithm < SudokuAlgorithm
-  def TrialAndErrorAlgorithm.improve_component(an_array, element)
-    if pos = an_array.index(0)
-      an_array[pos] = element
-    end
-    return an_array
-  end
-
   def TrialAndErrorAlgorithm.solve(puzzle)
     if puzzle.solved?
       return puzzle
@@ -45,6 +38,13 @@ class TrialAndErrorAlgorithm < SudokuAlgorithm
         return try_luck_with(elements, puzzle, initial_puzzle)
       end
     end
+  end
+
+  def TrialAndErrorAlgorithm.improve_component(an_array, element)
+    if pos = an_array.index(0)
+      an_array[pos] = element
+    end
+    return an_array
   end
 
   def TrialAndErrorAlgorithm.incomplete_component_index(an_array, puzzle)
